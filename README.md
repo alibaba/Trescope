@@ -59,7 +59,7 @@ Once the step above finishes, just `package`
 
 ## Communication
 If you have any suggestion or issue, you can contact with us by Dingtalk or issue at github directly, scan the QR code below to enter Dingtalk group:
-![Dintalk group0](readme/dingtalk-group0.jpg)
+<img src="readme/dingtalk-group0.jpg" height="256"/>
 
 ## License
 MIT
