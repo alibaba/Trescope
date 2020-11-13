@@ -1,0 +1,16 @@
+#!/usr/local/bin/python3
+import os
+import subprocess
+import sys
+import trescope
+
+trescopeExe = None
+if 'linux' == sys.platform.lower():
+    trescopeExe = f"xvfb-run -a {os.path.join(os.path.dirname(trescope.__file__), 'serverPackage/trescope')}"
+elif 'darwin' == sys.platform.lower():
+    trescopeExe = os.path.join(os.path.dirname(trescope.__file__), 'serverPackage/trescope.app/Contents/MacOS/trescope')
+else:
+    raise Exception(f'Unsupported platform: {sys.platform}')
+
+trescopeExe = f'{trescopeExe} {" ".join(sys.argv[1:])}' if len(sys.argv) > 1 else trescopeExe
+subprocess.call([trescopeExe], shell=True)

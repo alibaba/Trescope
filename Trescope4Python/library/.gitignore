@@ -1,0 +1,9 @@
+src/trescope/version
+src/trescope/LICENSE
+src/trescope/LICENSES.chromium.html
+**/__pycache__/
+**/.DS_Store
+build/
+dist/
+trescope.egg-info/
+doc/_build/

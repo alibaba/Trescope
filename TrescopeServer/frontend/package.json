@@ -1,0 +1,48 @@
+{
+    "name": "trescope_frontend",
+    "version": "0.1.0",
+    "private": true,
+    "proxy": "http://localhost:9000",
+    "dependencies": {
+        "react": "^16.13.0",
+        "react-dom": "^16.13.0",
+        "react-scripts": "3.4.0",
+        "plotly.js": "file:../third/plotly.js",
+        "@material-ui/core": "^4.2.1",
+        "@material-ui/icons": "^4.2.1",
+        "websocket": "^1.0.29",
+        "react-resize-detector": "^4.2.0",
+        "react-iframe": "^1.8.0",
+        "react-json-prettify": "^0.1.4",
+        "3d-force-graph": "1.53.0",
+        "d3-force-3d": "^2.0.3",
+        "three-spritetext": "^1.1.1",
+        "scene-json-renderer": "file:../universal/scene-json-renderer",
+        "three": "0.120.1",
+        "@material-ui/styles": "latest"
+    },
+    "scripts": {
+        "build-plotlyjs": "npm --prefix ../third/plotly.js run build",
+        "build-scene_loader": "npm --prefix ../universal/scene-json-renderer run tsc",
+        "build": "react-scripts build",
+        "build-all": "npm run build-plotlyjs && npm run build-scene_loader && npm run build",
+        "start": "react-scripts start",
+        "test": "react-scripts test",
+        "eject": "react-scripts eject"
+    },
+    "eslintConfig": {
+        "extends": "react-app"
+    },
+    "browserslist": {
+        "production": [
+            ">0.2%",
+            "not dead",
+            "not op_mini all"
+        ],
+        "development": [
+            "last 1 chrome version",
+            "last 1 firefox version",
+            "last 1 safari version"
+        ]
+    }
+}

@@ -1,0 +1,22 @@
+#!/usr/local/bin/python3
+
+import os
+import sys
+import json
+
+__modulePath = os.path.realpath(os.path.dirname(__file__))
+__frontendPath = os.path.join(__modulePath,'TrescopeServer/frontend/')
+__backendPath = os.path.join(__modulePath,'TrescopeServer/backend/')
+__pythonLibPath = os.path.join(__modulePath,'Trescope4Python/library')
+with open('version.json') as f: version = json.load(f)['version']
+os.system(f'cp version.json {os.path.join(__backendPath,"src")}')
+
+os.chdir(__frontendPath)
+os.system('npm run build-all')
+
+os.chdir(__backendPath)
+os.system('npm run pack')
+
+os.chdir(__pythonLibPath)
+python_version = sys.argv[1] if len(sys.argv)>1 else ''
+os.system(f'rm -rf build && rm -rf dist && rm -rf trescope.egg-info && python{python_version} setup.py bdist_wheel version={version}')

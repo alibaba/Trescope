@@ -1,0 +1,68 @@
+/**
+* Copyright 2012-2020, Plotly, Inc.
+* All rights reserved.
+*
+* This source code is licensed under the MIT license found in the
+* LICENSE file in the root directory of this source tree.
+*/
+
+'use strict';
+
+var Lib = require('../lib');
+
+var toImage = require('../plot_api/to_image');
+
+var fileSaver = require('./filesaver');
+var helpers = require('./helpers');
+
+/**
+ * Plotly.downloadImage
+ *
+ * @param {object | string | HTML div} gd
+ *   can either be a data/layout/config object
+ *   or an existing graph <div>
+ *   or an id to an existing graph <div>
+ * @param {object} opts (see Plotly.toImage in ../plot_api/to_image)
+ * @return {promise}
+ */
+function downloadImage(gd, opts) {
+    var _gd;
+    if(!Lib.isPlainObject(gd)) _gd = Lib.getGraphDiv(gd);
+
+    opts = opts || {};
+    opts.format = opts.format || 'png';
+    opts.imageDataOnly = true;
+
+    return new Promise(function(resolve, reject) {
+        if(_gd && _gd._snapshotInProgress) {
+            reject(new Error('Snapshotting already in progress.'));
+        }
+
+        // see comments within svgtoimg for additional
+        //   discussion of problems with IE
+        //   can now draw to canvas, but CORS tainted canvas
+        //   does not allow toDataURL
+        //   svg format will work though
+        if(Lib.isIE() && opts.format !== 'svg') {
+            reject(new Error(helpers.MSG_IE_BAD_FORMAT));
+        }
+
+        if(_gd) _gd._snapshotInProgress = true;
+        var promise = toImage(gd, opts);
+
+        var filename = opts.filename || gd.fn || 'newplot';
+        filename += '.' + opts.format.replace('-', '.');
+
+        promise.then(function(result) {
+            if(_gd) _gd._snapshotInProgress = false;
+            return fileSaver(result, filename, opts.format);
+        }).then(function(name) {
+            resolve(name);
+        }).catch(function(err) {
+            if(_gd) _gd._snapshotInProgress = false;
+            reject(err);
+        });
+    });
+}
+
+module.exports = downloadImage;

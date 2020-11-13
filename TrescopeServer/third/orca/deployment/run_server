@@ -1,0 +1,56 @@
+#!/bin/bash -xe
+
+fc-cache -v /usr/share/fonts/user
+
+if [[ $PLOTLY_CUSTOM_FONTS_ENABLED = true ]]; then
+  fc-cache -v /usr/share/fonts/customer
+fi
+
+if [[ $PLOTLY_IMAGESERVER_IGNORE_CERT_ERRORS = true ]]; then
+  ORCA_IGNORECERTERRORS_ARG="--ignore-certificate-errors"
+fi
+
+BUILD_DIR=/var/www/image-exporter/build
+if [[ -n "${PLOTLY_JS_SRC}" ]]; then
+  # Fetch plotly js bundle and save it locally:
+  mkdir -p $BUILD_DIR
+  while true; do
+    wget --tries=1 --no-check-certificate -O $BUILD_DIR/plotly-bundle.js "$PLOTLY_JS_SRC" && break
+    sleep 1
+  done
+  PLOTLYJS_ARG="--plotlyJS $BUILD_DIR/plotly-bundle.js"
+fi
+
+# Dynamically create the wrapper used to launch xvfb and the server so that
+# we can fill in $@ from the Docker "command" argument.
+cat > /usr/local/bin/xvfb_wrapper <<EOF
+#!/bin/bash -x
+
+exec >/proc/1/fd/1 2>/proc/1/fd/2
+
+PIDFILE=/var/run/xvfb.pid
+
+if [ -e \$PIDFILE ] ; then
+  kill \`cat \$PIDFILE\`
+  rm -f \$PIDFILE
+  sleep 1
+fi
+
+pkill -9 Xvfb
+pkill -9 node
+pkill -9 electron
+
+xvfb-run --auto-servernum --server-args '-screen 0 1024x768x24' /var/www/image-exporter/bin/orca.js serve $REQUEST_LIMIT --safe-mode --verbose $PLOTLYJS_ARG $ORCA_IGNORECERTERRORS_ARG $@ &
+echo \$! > \$PIDFILE
+
+EOF
+
+chmod 755 /usr/local/bin/xvfb_wrapper
+
+/usr/local/bin/xvfb_wrapper
+
+if [[ "$PLOTLY_IMAGESERVER_ENABLE_MONIT" = "true" ]]; then
+  /opt/monit/bin/monit -c /etc/monitrc
+else
+  sleep infinity
+fi

@@ -1,0 +1,30 @@
+{
+  "name": "scene-json-renderer",
+  "version": "0.0.1",
+  "description": "The renderer for scene.json data",
+  "main": "./lib/index.js",
+  "files": [
+    "lib/"
+  ],
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "tsc": "tsc -p tsconfig.json",
+    "prepublishOnly": "npm run tsc"
+  },
+  "author": "wintonwl",
+  "license": "MIT",
+  "dependencies": {
+    "three": "0.119.1",
+    "pngjs": "5.0.0",
+    "@types/pngjs": "3.4.2",
+    "node-fetch": "2.6.0",
+    "@types/node-fetch": "2.5.7",
+    "jpeg-js": "0.4.2",
+    "@types/jpeg-js": "0.3.7",
+    "protobufjs": "6.10.1",
+    "filehound": "1.17.4"
+  },
+  "devDependencies": {
+    "typescript": "^3.9.7"
+  }
+}

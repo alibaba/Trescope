@@ -1,0 +1,112 @@
+# WARNING: There is considerable duplication between this file and the
+# prod version.  When updating this file, please check if your changes
+# need to be made to the other version.
+
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  annotations:
+    cluster-autoscaler.kubernetes.io/safe-to-evict: "true"
+  name: imageserver
+  labels:
+    app: imageserver
+spec:
+  replicas: 3
+  strategy:
+    rollingUpdate:
+      maxSurge: 100%
+      maxUnavailable: 25%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: imageserver
+        tier: frontend
+    spec:
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: failure-domain.beta.kubernetes.io/zone
+                operator: In
+                values:
+                - us-central1-a
+                - us-central1-b
+                - us-central1-c
+        podAntiAffinity:
+          preferredDuringSchedulingIgnoredDuringExecution:
+          - podAffinityTerm:
+              labelSelector:
+                matchExpressions:
+                - key: app
+                  operator: In
+                  values:
+                  - imageserver
+              topologyKey: failure-domain.beta.kubernetes.io/zone
+            weight: 1
+          requiredDuringSchedulingIgnoredDuringExecution:
+          - labelSelector:
+              matchExpressions:
+              - key: app
+                operator: In
+                values:
+                - imageserver
+            topologyKey: kubernetes.io/hostname
+      containers:
+      - name: imageserver-app
+        image: quay.io/plotly/image-exporter:master
+        args: ["--plotlyJS", "https://stage.plot.ly/static/plotlyjs/build/plotlyjs-bundle.js"]
+        env:
+          - name: MAPBOX_ACCESS_TOKEN
+            valueFrom:
+              secretKeyRef:
+                name: mapbox
+                key: default_access_token
+          - name: PLOTLY_IMAGESERVER_ENABLE_MONIT
+            value: false
+        # This setting makes nodes pull the docker image every time before
+        # starting the pod. This is useful when debugging, but should be turned
+        # off in production.
+        imagePullPolicy: Always
+        ports:
+        - name: http-server
+          containerPort: 9091
+        resources:
+         limits:
+           memory: 2396Mi
+         requests:
+           cpu: 100m
+           memory: 1Gi
+        volumeMounts:
+        - mountPath: "/usr/share/fonts/user"
+          name: plotly-cloud-licensed-fonts
+        - mountPath: "/dev/shm"
+          name: dshm
+        livenessProbe:
+          httpGet:
+            path: /ping
+            port: 9091
+          initialDelaySeconds: 10
+          periodSeconds: 10
+          timeoutSeconds: 5
+          failureThreshold: 3
+        readinessProbe:
+          exec:
+            command:
+            - cat
+            - /var/run/xvfb.pid
+          failureThreshold: 1
+          initialDelaySeconds: 20
+          periodSeconds: 1
+          successThreshold: 1
+          timeoutSeconds: 1
+      volumes:
+      - name: plotly-cloud-licensed-fonts
+        gcePersistentDisk:
+          pdName: plotly-cloud-licensed-fonts
+          readOnly: true
+          fsType: ext4
+      - name: dshm
+        emptyDir:
+          medium: Memory

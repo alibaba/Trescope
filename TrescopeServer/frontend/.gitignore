@@ -1,0 +1,15 @@
+node_modules
+
+build/*
+!build/plotcss.js
+!build/README.md
+
+npm-debug.log*
+*.sublime*
+
+.*
+!.circleci
+!.gitignore
+!.npmignore
+!.eslintrc
+!.eslintignore

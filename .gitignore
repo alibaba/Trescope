@@ -1,0 +1,16 @@
+!**/package-lock.json
+!TrescopeServer/third/plotly.js/tasks/util/
+!TrescopeServer/third/plotly.js/tasks/preprocess.js
+!TrescopeServer/third/plotly.js/tasks/find_locale_strings.js
+!TrescopeServer/third/plotly.js/tasks/bundle.js
+!TrescopeServer/third/plotly.js/tasks/header.js
+!TrescopeServer/third/plotly.js/tasks/stats.js
+!TrescopeServer/third/plotly.js/tasks/compress_attributes.js
+
+**/__pycache__
+**/.DS_Store
+**/.idea
+
+TrescopeServer/universal/scene-json-renderer/lib/
+TrescopeServer/third/orca/bin/
+TrescopeServer/third/plotly.js/test/image/export_test.js

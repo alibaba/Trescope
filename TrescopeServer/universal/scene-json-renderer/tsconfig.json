@@ -1,0 +1,19 @@
+{
+    "compilerOptions": {
+        "target": "ES2015",
+        // "module": "ES2020",
+        // "module": "ES2015",
+        "module": "CommonJS",
+        "strict": true,
+        "esModuleInterop": true,
+        "forceConsistentCasingInFileNames": true,
+        "outDir": "./lib",
+        "declaration": false,
+        "moduleResolution": "Node",
+        "allowJs": true
+        // "inlineSourceMap": true,
+        // "inlineSources": true
+    },
+    "include": ["src/**/*"],
+    "exclude": ["node_modules", "**/*.spec.ts"]
+}

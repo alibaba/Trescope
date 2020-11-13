@@ -1,0 +1,17 @@
+build/*
+!build/plotcss.js
+!build/README.md
+
+devtools
+test
+dist/extras
+
+circle.yml
+bower.json
+
+.ackrc
+.agignore
+.eslintignore
+.eslintrc
+
+npm-debug.log
