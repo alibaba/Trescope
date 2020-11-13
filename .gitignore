@@ -11,6 +11,7 @@
 **/.DS_Store
 **/.idea
 
+Trescope4Python/library/doc/
 TrescopeServer/universal/scene-json-renderer/lib/
 TrescopeServer/third/orca/bin/
 TrescopeServer/third/plotly.js/test/image/export_test.js
