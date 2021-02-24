@@ -83,7 +83,7 @@ html_context = sphinx_material.get_html_context()
 html_theme = "sphinx_material"
 
 html_theme_options = {
-    # "repo_url": "https://github.com/alibaba/Trescope",
+    "repo_url": "https://github.com/alibaba/Trescope",
     "repo_name": "Trescope",
     "html_minify": False,
     "html_prettify": True,

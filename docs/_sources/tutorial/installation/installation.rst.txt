@@ -1,6 +1,3 @@
-Installation
-==============
-
 Installing from http link directly
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 Now only support Mac and Linux, one can run the following command:
