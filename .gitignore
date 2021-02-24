@@ -14,5 +14,5 @@
 
 Trescope4Python/library/doc/
 TrescopeServer/universal/scene-json-renderer/lib/
-TrescopeDoc/_build/
+!TrescopeDoc/_build/
 TrescopeServer/third/plotly.js/test/image/export_test.js

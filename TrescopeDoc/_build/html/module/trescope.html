@@ -1,0 +1,4757 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="ie=edge" http-equiv="x-ua-compatible"/>
+  <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
+  <meta content="Copied to clipboard" name="lang:clipboard.copied"/>
+  <meta content="en" name="lang:search.language"/>
+  <meta content="True" name="lang:search.pipeline.stopwords"/>
+  <meta content="True" name="lang:search.pipeline.trimmer"/>
+  <meta content="No matching documents" name="lang:search.result.none"/>
+  <meta content="1 matching document" name="lang:search.result.one"/>
+  <meta content="# matching documents" name="lang:search.result.other"/>
+  <meta content="[\s\-]+" name="lang:search.tokenizer"/>
+  <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&amp;display=fallback" rel="stylesheet"/>
+  <style>
+   body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+  </style>
+  <link href="../_static/stylesheets/application.css" rel="stylesheet"/>
+  <link href="../_static/stylesheets/application-palette.css" rel="stylesheet"/>
+  <link href="../_static/stylesheets/application-fixes.css" rel="stylesheet"/>
+  <link href="../_static/fonts/material-icons.css" rel="stylesheet"/>
+  <meta content="#2196f3" name="theme-color"/>
+  <script src="../_static/javascripts/modernizr.js">
+  </script>
+  <link href="../_static/_static/favicon.png" rel="apple-touch-icon"/>
+  <title>
+   trescope — Trescope
+  </title>
+  <link href="../_static/pygments.css" rel="stylesheet" type="text/css"/>
+  <link href="../_static/material.css" rel="stylesheet" type="text/css"/>
+  <link href="../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+  <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js">
+  </script>
+  <script src="../_static/jquery.js">
+  </script>
+  <script src="../_static/underscore.js">
+  </script>
+  <script src="../_static/doctools.js">
+  </script>
+  <script src="../_static/clipboard.min.js">
+  </script>
+  <script src="../_static/copybutton.js">
+  </script>
+  <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js">
+  </script>
+  <link href="../_static/favicon.ico" rel="shortcut icon"/>
+  <link href="../genindex.html" rel="index" title="Index"/>
+  <link href="../search.html" rel="search" title="Search"/>
+  <link href="trescope.config.html" rel="next" title="trescope.config"/>
+  <link href="../tutorial/interactive_control/index.html" rel="prev" title="Interactive control"/>
+  <link href="../_static/_static/favicon.png" rel="apple-touch-icon"/>
+ </head>
+ <body data-md-color-accent="cyan" data-md-color-primary="#4253af" dir="ltr">
+  <svg class="md-svg">
+   <defs data-children-count="0">
+    <svg height="448" id="__github" viewbox="0 0 416 448" width="416" xmlns="http://www.w3.org/2000/svg">
+     <path d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z" fill="currentColor">
+     </path>
+    </svg>
+   </defs>
+  </svg>
+  <input class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+  <input class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+  <label class="md-overlay" data-md-component="overlay" for="__drawer">
+  </label>
+  <a class="md-skip" href="#module/trescope" tabindex="1">
+   Skip to content
+  </a>
+  <header class="md-header" data-md-component="header">
+   <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <a class="md-header-nav__button md-logo" href="../index.html" title="Trescope">
+       <i class="md-icon">
+       </i>
+      </a>
+     </div>
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer">
+      </label>
+     </div>
+     <div class="md-flex__cell md-flex__cell--stretch">
+      <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+       <span class="md-header-nav__topic">
+        Trescope
+       </span>
+       <span class="md-header-nav__topic">
+        trescope
+       </span>
+      </div>
+     </div>
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <label class="md-icon md-icon--search md-header-nav__button" for="__search">
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+       <label class="md-search__overlay" for="__search">
+       </label>
+       <div class="md-search__inner" role="search">
+        <form action="../search.html" class="md-search__form" method="GET" name="search">
+         <input autocapitalize="off" autocomplete="off" class="md-search__input" data-md-component="query" data-md-state="active" name="q" placeholder="Search" spellcheck="false" type="text"/>
+         <label class="md-icon md-search__icon" for="__search">
+         </label>
+         <button class="md-icon md-search__icon" data-md-component="reset" tabindex="-1" type="reset">
+          
+         </button>
+        </form>
+        <div class="md-search__output">
+         <div class="md-search__scrollwrap" data-md-scrollfix="">
+          <div class="md-search-result" data-md-component="result">
+           <div class="md-search-result__meta">
+            Type to start searching
+           </div>
+           <ol class="md-search-result__list">
+           </ol>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </nav>
+  </header>
+  <div class="md-container">
+   <main class="md-main">
+    <div class="md-main__inner md-grid" data-md-component="container">
+     <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav class="md-nav md-nav--primary" data-md-level="0">
+         <label class="md-nav__title md-nav__title--site" for="__drawer">
+          <a class="md-nav__button md-logo" href="../index.html" title="Trescope">
+           <i class="md-icon">
+           </i>
+          </a>
+          <a href="../index.html" title="Trescope">
+           Trescope
+          </a>
+         </label>
+         <ul class="md-nav__list">
+          <li class="md-nav__item">
+           <span class="md-nav__link caption">
+            <span class="caption-text">
+             Tutorial
+            </span>
+           </span>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../tutorial/installation/index.html">
+            Installation
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../tutorial/visualization/index.html">
+            Visualization
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../tutorial/labeling/index.html">
+            Labeling
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../tutorial/interactive_control/index.html">
+            Interactive control
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <span class="md-nav__link caption">
+            <span class="caption-text">
+             API Reference(Python)
+            </span>
+           </span>
+          </li>
+          <li class="md-nav__item">
+           <input class="md-toggle md-nav__toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+           <label class="md-nav__link md-nav__link--active" for="__toc">
+            trescope
+           </label>
+           <a class="md-nav__link md-nav__link--active" href="#">
+            trescope
+           </a>
+           <nav class="md-nav md-nav--secondary">
+            <label class="md-nav__title" for="__toc">
+             Contents
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#module-trescope--page-root">
+               trescope
+              </a>
+              <nav class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#id1">
+                  Trescope
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#outputmanager">
+                  OutputManager
+                 </a>
+                 <nav class="md-nav">
+                  <ul class="md-nav__list">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#displayoutput">
+                     DisplayOutput
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#fileoutput">
+                     FileOutput
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#output-and-input">
+                  Output and Input
+                 </a>
+                 <nav class="md-nav">
+                  <ul class="md-nav__list">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#output">
+                     Output
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#input">
+                     Input
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#content">
+                     Content
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#layout">
+                  Layout
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+            </ul>
+           </nav>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#id1">
+              Trescope
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#outputmanager">
+              OutputManager
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#output-and-input">
+              Output and Input
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#layout">
+              Layout
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="trescope.config.html">
+            trescope.config
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="trescope.controller.html">
+            trescope.controller
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="trescope.toolbox.html">
+            trescope.toolbox
+           </a>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav class="md-nav md-nav--secondary">
+         <label class="md-nav__title" for="__toc">
+          Contents
+         </label>
+         <ul class="md-nav__list" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#module-trescope--page-root">
+            trescope
+           </a>
+           <nav class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#id1">
+               Trescope
+              </a>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#outputmanager">
+               OutputManager
+              </a>
+              <nav class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#displayoutput">
+                  DisplayOutput
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#fileoutput">
+                  FileOutput
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#output-and-input">
+               Output and Input
+              </a>
+              <nav class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#output">
+                  Output
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#input">
+                  Input
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#content">
+                  Content
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#layout">
+               Layout
+              </a>
+             </li>
+            </ul>
+           </nav>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-content">
+      <article class="md-content__inner md-typeset" role="main">
+       <h1 id="module-trescope--page-root">
+        trescope
+        <a class="headerlink" href="#module-trescope--page-root" title="Permalink to this headline">
+         ¶
+        </a>
+       </h1>
+       <style>
+        .doc-emphasize {color: #AA0000}
+       </style>
+       <div class="contents local topic" id="contents">
+        <p class="topic-title">
+         Contents
+        </p>
+        <ul class="simple">
+         <li>
+          <p>
+           <a class="reference internal" href="#id1" id="id2">
+            Trescope
+           </a>
+          </p>
+         </li>
+         <li>
+          <p>
+           <a class="reference internal" href="#outputmanager" id="id3">
+            OutputManager
+           </a>
+          </p>
+          <ul>
+           <li>
+            <p>
+             <a class="reference internal" href="#displayoutput" id="id4">
+              DisplayOutput
+             </a>
+            </p>
+           </li>
+           <li>
+            <p>
+             <a class="reference internal" href="#fileoutput" id="id5">
+              FileOutput
+             </a>
+            </p>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <p>
+           <a class="reference internal" href="#output-and-input" id="id6">
+            Output and Input
+           </a>
+          </p>
+          <ul>
+           <li>
+            <p>
+             <a class="reference internal" href="#output" id="id7">
+              Output
+             </a>
+            </p>
+           </li>
+           <li>
+            <p>
+             <a class="reference internal" href="#input" id="id8">
+              Input
+             </a>
+            </p>
+           </li>
+           <li>
+            <p>
+             <a class="reference internal" href="#content" id="id9">
+              Content
+             </a>
+            </p>
+           </li>
+          </ul>
+         </li>
+         <li>
+          <p>
+           <a class="reference internal" href="#layout" id="id10">
+            Layout
+           </a>
+          </p>
+         </li>
+        </ul>
+       </div>
+       <h2 id="id1">
+        <a class="toc-backref" href="#id2">
+         Trescope
+        </a>
+        <a class="headerlink" href="#id1" title="Permalink to this headline">
+         ¶
+        </a>
+       </h2>
+       <dl class="py class">
+        <dt id="trescope.Trescope">
+         <em class="property">
+          class
+         </em>
+         <code class="sig-prename descclassname">
+          trescope.
+         </code>
+         <code class="sig-name descname">
+          Trescope
+         </code>
+         <span class="sig-paren">
+          (
+         </span>
+         <em class="sig-param">
+          <span class="o">
+           *
+          </span>
+          <span class="n">
+           args
+          </span>
+         </em>
+         ,
+         <em class="sig-param">
+          <span class="o">
+           **
+          </span>
+          <span class="n">
+           kwargs
+          </span>
+         </em>
+         <span class="sig-paren">
+          )
+         </span>
+         <a class="reference internal" href="../_modules/trescope/core/Trescope.html#Trescope">
+          <span class="viewcode-link">
+           [source]
+          </span>
+         </a>
+         <a class="headerlink" href="#trescope.Trescope" title="Permalink to this definition">
+          ¶
+         </a>
+        </dt>
+        <dd>
+         <p>
+          Heterogeneous language client , used to connect backend for
+          <strong>
+           debugging
+          </strong>
+          ,
+          <strong>
+           visualization
+          </strong>
+          ( display mode or file mode ) ,
+          <strong>
+           fetching inputs from display
+          </strong>
+          , etc .
+Before using it ,
+          <span class="doc-emphasize">
+           please ensure that a backend has been started by typing trescope in terminal with enter
+          </span>
+          ,
+after starting backend , you should invoke
+          <a class="reference internal" href="#trescope.Trescope.initialize" title="trescope.Trescope.initialize">
+           <code class="xref py py-meth docutils literal notranslate">
+            <span class="pre">
+             Trescope.initialize()
+            </span>
+           </code>
+          </a>
+          first in your code before any other Trescope APIs called .
+It is a single instance , so you can use it globally in your code .
+         </p>
+         <p>
+          <strong>
+           Usage
+          </strong>
+          :
+         </p>
+         <ol class="arabic simple">
+          <li>
+           <p>
+            Open terminal , enter
+            <code class="code bash docutils literal notranslate">
+             <span class="pre">
+              trescope
+             </span>
+            </code>
+            :
+           </p>
+          </li>
+         </ol>
+         <div class="highlight-bash notranslate">
+          <table class="highlighttable">
+           <tr>
+            <td class="linenos">
+             <div class="linenodiv">
+              <pre>1</pre>
+             </div>
+            </td>
+            <td class="code">
+             <div class="highlight">
+              <pre><span></span>$ trescope
+</pre>
+             </div>
+            </td>
+           </tr>
+          </table>
+         </div>
+         <ol class="arabic simple" start="2">
+          <li>
+           <p>
+            Open browser with the link info shown by terminal ( Available on ) .
+           </p>
+          </li>
+          <li>
+           <p>
+            Run the code :
+           </p>
+          </li>
+         </ol>
+         <div class="highlight-python notranslate">
+          <table class="highlighttable">
+           <tr>
+            <td class="linenos">
+             <div class="linenodiv">
+              <pre>1
+2
+3
+4
+5
+6</pre>
+             </div>
+            </td>
+            <td class="code">
+             <div class="highlight">
+              <pre><span></span><span class="kn">from</span> <span class="nn">trescope</span> <span class="kn">import</span> <span class="n">Trescope</span>
+<span class="kn">from</span> <span class="nn">trescope.config</span> <span class="kn">import</span> <span class="n">Scatter3DConfig</span>
+<span class="kn">from</span> <span class="nn">trescope.toolbox</span> <span class="kn">import</span> <span class="n">simpleDisplayOutputs</span>
+
+<span class="hll"><span class="n">Trescope</span><span class="p">()</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">simpleDisplayOutputs</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</span><span class="n">Trescope</span><span class="p">()</span><span class="o">.</span><span class="n">selectOutput</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">plotScatter3D</span><span class="p">(</span><span class="n">x</span><span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">y</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">z</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">withConfig</span><span class="p">(</span><span class="n">Scatter3DConfig</span><span class="p">()</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="mh">0xffff0000</span><span class="p">))</span>
+</pre>
+             </div>
+            </td>
+           </tr>
+          </table>
+         </div>
+         <ol class="arabic simple" start="4">
+          <li>
+           <p>
+            Check your browser , see the result .
+           </p>
+          </li>
+         </ol>
+         <dl class="py method">
+          <dt id="trescope.Trescope.breakPoint">
+           <code class="sig-name descname">
+            breakPoint
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             identifier
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             str
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           → Dict
+           <a class="reference internal" href="../_modules/trescope/core/Trescope.html#Trescope.breakPoint">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Trescope.breakPoint" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Pause program execution and return input data from
+            <a class="reference internal" href="#trescope.Input" title="trescope.Input">
+             <code class="xref py py-mod docutils literal notranslate">
+              <span class="pre">
+               trescope.Input
+              </span>
+             </code>
+            </a>
+            when resume .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               identifier
+              </strong>
+              – Any string identifies which breakpoint
+             </p>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              Input data from
+              <strong>
+               control
+              </strong>
+              of display, see
+              <code class="xref py py-mod docutils literal notranslate">
+               <span class="pre">
+                trescope.control
+               </span>
+              </code>
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Trescope.initialize">
+           <code class="sig-name descname">
+            initialize
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             open
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             bool
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             outputManager
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             trescope.core.OutputManager.FileOutputManager
+             <span class="p">
+              ,
+             </span>
+             trescope.core.OutputManager.DisplayOutputManager
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             identifier
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             str
+            </span>
+            <span class="o">
+             =
+            </span>
+            <span class="default_value">
+             'main'
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           → None
+           <a class="reference internal" href="../_modules/trescope/core/Trescope.html#Trescope.initialize">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Trescope.initialize" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Initialize heterogeneous language client : specify
+            <strong>
+             outputs
+            </strong>
+            ( file output for image rendering and display output for interaction ,
+such as debugging algorithm process step by step … ) and
+            <strong>
+             identifier
+            </strong>
+            for backend connection .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 open
+                </strong>
+                – now always True
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 outputManager
+                </strong>
+                – The manager to arrange outputs , there are two types for OutputManager :
+                <a class="reference internal" href="#trescope.DisplayOutputManager" title="trescope.DisplayOutputManager">
+                 <code class="xref py py-mod docutils literal notranslate">
+                  <span class="pre">
+                   trescope.DisplayOutputManager
+                  </span>
+                 </code>
+                </a>
+                (plots data
+to display , ) and
+                <a class="reference internal" href="#trescope.FileOutputManager" title="trescope.FileOutputManager">
+                 <code class="xref py py-mod docutils literal notranslate">
+                  <span class="pre">
+                   trescope.FileOutputManager
+                  </span>
+                 </code>
+                </a>
+                .
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 identifier
+                </strong>
+                – Default “main” . Any string for identifying backend , only same identifier leads to successful connection of
+heterogeneous language client and backend launched in terminal , you can specify backend identifier by passing args
+like this
+                <code class="code bash docutils literal notranslate">
+                 <span class="pre">
+                  trescope
+                 </span>
+                 <span class="pre">
+                  --identifier
+                 </span>
+                 <span class="pre">
+                  the-same-identifier
+                 </span>
+                </code>
+                or alias for
+                <code class="code bash docutils literal notranslate">
+                 <span class="pre">
+                  trescope
+                 </span>
+                 <span class="pre">
+                  --id
+                 </span>
+                 <span class="pre">
+                  the-same-identifier
+                 </span>
+                </code>
+                .
+               </p>
+              </li>
+             </ul>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Trescope.selectOutput">
+           <code class="sig-name descname">
+            selectOutput
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             id
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             str
+             <span class="p">
+              ,
+             </span>
+             int
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           → trescope.core.Output.Output
+           <a class="reference internal" href="../_modules/trescope/core/Trescope.html#Trescope.selectOutput">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Trescope.selectOutput" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Select an
+            <a class="reference internal" href="#trescope.Output" title="trescope.Output">
+             <code class="xref py py-mod docutils literal notranslate">
+              <span class="pre">
+               trescope.Output
+              </span>
+             </code>
+            </a>
+            to plot data , add control , etc .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               id
+              </strong>
+              – Output id that added when call
+              <a class="reference internal" href="#trescope.Trescope.initialize" title="trescope.Trescope.initialize">
+               <code class="xref py py-meth docutils literal notranslate">
+                <span class="pre">
+                 Trescope.initialize()
+                </span>
+               </code>
+              </a>
+             </p>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              The output selected
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </dd>
+       </dl>
+       <h2 id="outputmanager">
+        <a class="toc-backref" href="#id3">
+         OutputManager
+        </a>
+        <a class="headerlink" href="#outputmanager" title="Permalink to this headline">
+         ¶
+        </a>
+       </h2>
+       <p>
+        In trescope , you can specify two outputs for visualization data :
+        <strong>
+         display
+        </strong>
+        (
+        <a class="reference internal" href="#trescope.DisplayOutputManager" title="trescope.DisplayOutputManager">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           trescope.DisplayOutputManager
+          </span>
+         </code>
+        </a>
+        ) or
+        <strong>
+         file
+        </strong>
+        (
+        <a class="reference internal" href="#trescope.FileOutputManager" title="trescope.FileOutputManager">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           trescope.FileOutputManager
+          </span>
+         </code>
+        </a>
+        ) ,
+        <strong>
+         display
+        </strong>
+        for plotting data in display (browser) ,
+        <strong>
+         file
+        </strong>
+        for plotting data to image file .
+       </p>
+       <h3 id="displayoutput">
+        <a class="toc-backref" href="#id4">
+         DisplayOutput
+        </a>
+        <a class="headerlink" href="#displayoutput" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <dl class="py class">
+        <dt id="trescope.DisplayOutputManager">
+         <em class="property">
+          class
+         </em>
+         <code class="sig-prename descclassname">
+          trescope.
+         </code>
+         <code class="sig-name descname">
+          DisplayOutputManager
+         </code>
+         <span class="sig-paren">
+          (
+         </span>
+         <em class="sig-param">
+          <span class="n">
+           resolutionRow
+          </span>
+          <span class="p">
+           :
+          </span>
+          <span class="n">
+           int
+          </span>
+         </em>
+         ,
+         <em class="sig-param">
+          <span class="n">
+           resolutionColumn
+          </span>
+          <span class="p">
+           :
+          </span>
+          <span class="n">
+           int
+          </span>
+         </em>
+         <span class="sig-paren">
+          )
+         </span>
+         <a class="reference internal" href="../_modules/trescope/core/OutputManager.html#DisplayOutputManager">
+          <span class="viewcode-link">
+           [source]
+          </span>
+         </a>
+         <a class="headerlink" href="#trescope.DisplayOutputManager" title="Permalink to this definition">
+          ¶
+         </a>
+        </dt>
+        <dd>
+         <p>
+          Specify output as display , check data in display ( browser ) with interaction , divide whole display to
+          <cite>
+           resolutionRow
+          </cite>
+          *
+          <cite>
+           resolutionColumn
+          </cite>
+          grids ,
+then layout outputs by specifying which grid to start at and how many grids to span .
+         </p>
+         <dl class="field-list simple">
+          <dt class="field-odd">
+           Parameters
+          </dt>
+          <dd class="field-odd">
+           <ul class="simple">
+            <li>
+             <p>
+              <strong>
+               resolutionRow
+              </strong>
+              – How many rows to divide
+             </p>
+            </li>
+            <li>
+             <p>
+              <strong>
+               resolutionColumn
+              </strong>
+              – How many columns  to divide
+             </p>
+            </li>
+           </ul>
+          </dd>
+         </dl>
+         <p>
+          Example says all :
+         </p>
+         <blockquote>
+          <div>
+           <div class="highlight-python notranslate">
+            <table class="highlighttable">
+             <tr>
+              <td class="linenos">
+               <div class="linenodiv">
+                <pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13</pre>
+               </div>
+              </td>
+              <td class="code">
+               <div class="highlight">
+                <pre><span></span><span class="kn">from</span> <span class="nn">trescope</span> <span class="kn">import</span> <span class="n">Trescope</span><span class="p">,</span> <span class="n">DisplayOutputManager</span><span class="p">,</span> <span class="n">DisplayOutputDesc</span>
+<span class="kn">from</span> <span class="nn">trescope.config</span> <span class="kn">import</span> <span class="n">Scatter2DConfig</span>
+
+<span class="hll"><span class="c1"># Divide display to 4 * 10 grids</span>
+</span><span class="n">outputManager</span> <span class="o">=</span> <span class="n">DisplayOutputManager</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="hll"><span class="c1"># Output `startAt(0, 0).withSpan(1, 10)` occupies 1 * 10 grids and starts at grid(0 , 0)</span>
+</span><span class="n">outputManager</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">DisplayOutputDesc</span><span class="p">()</span><span class="o">.</span><span class="n">id</span><span class="p">(</span><span class="s1">'startAt(0, 0).withSpan(1, 10)'</span><span class="p">)</span><span class="o">.</span><span class="n">startAt</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">withSpan</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+<span class="n">outputManager</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">DisplayOutputDesc</span><span class="p">()</span><span class="o">.</span><span class="n">id</span><span class="p">(</span><span class="s1">'startAt(1, 0).withSpan(5, 2)'</span><span class="p">)</span><span class="o">.</span><span class="n">startAt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">withSpan</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">outputManager</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">DisplayOutputDesc</span><span class="p">()</span><span class="o">.</span><span class="n">id</span><span class="p">(</span><span class="s1">'startAt(1, 3).withSpan(3, 2)'</span><span class="p">)</span><span class="o">.</span><span class="n">startAt</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">withSpan</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">8</span><span class="p">))</span>
+<span class="n">Trescope</span><span class="p">()</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">outputManager</span><span class="p">)</span>
+<span class="n">Trescope</span><span class="p">()</span><span class="o">.</span><span class="n">selectOutput</span><span class="p">(</span><span class="s1">'startAt(0, 0).withSpan(1, 10)'</span><span class="p">)</span><span class="o">.</span><span class="n">plotScatter2D</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">withConfig</span><span class="p">(</span><span class="n">Scatter2DConfig</span><span class="p">())</span>
+<span class="n">Trescope</span><span class="p">()</span><span class="o">.</span><span class="n">selectOutput</span><span class="p">(</span><span class="s1">'startAt(1, 0).withSpan(5, 2)'</span><span class="p">)</span><span class="o">.</span><span class="n">plotScatter2D</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">withConfig</span><span class="p">(</span><span class="n">Scatter2DConfig</span><span class="p">())</span>
+<span class="n">Trescope</span><span class="p">()</span><span class="o">.</span><span class="n">selectOutput</span><span class="p">(</span><span class="s1">'startAt(1, 3).withSpan(3, 2)'</span><span class="p">)</span><span class="o">.</span><span class="n">plotScatter2D</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">withConfig</span><span class="p">(</span><span class="n">Scatter2DConfig</span><span class="p">())</span>
+</pre>
+               </div>
+              </td>
+             </tr>
+            </table>
+           </div>
+          </div>
+         </blockquote>
+         <p>
+          You will see something below in browser :
+         </p>
+         <img alt="../_images/display-output-manager.png" src="../_images/display-output-manager.png"/>
+         <dl class="py method">
+          <dt id="trescope.DisplayOutputManager.add">
+           <code class="sig-name descname">
+            add
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             outputDesc
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             trescope.core.OutputManager.DisplayOutputDesc
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/trescope/core/OutputManager.html#DisplayOutputManager.add">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.DisplayOutputManager.add" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Add output description .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               outputDesc
+              </strong>
+              – Display output description to specify
+              <strong>
+               output id
+              </strong>
+              ,
+              <strong>
+               where starts
+              </strong>
+              ,
+              <strong>
+               how many spans
+              </strong>
+             </p>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              self , for chain call
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </dd>
+       </dl>
+       <dl class="py class">
+        <dt id="trescope.DisplayOutputDesc">
+         <em class="property">
+          class
+         </em>
+         <code class="sig-prename descclassname">
+          trescope.
+         </code>
+         <code class="sig-name descname">
+          DisplayOutputDesc
+         </code>
+         <a class="reference internal" href="../_modules/trescope/core/OutputManager.html#DisplayOutputDesc">
+          <span class="viewcode-link">
+           [source]
+          </span>
+         </a>
+         <a class="headerlink" href="#trescope.DisplayOutputDesc" title="Permalink to this definition">
+          ¶
+         </a>
+        </dt>
+        <dd>
+         <p>
+          Display output description , specify
+          <strong>
+           id
+          </strong>
+          ,
+          <strong>
+           start
+          </strong>
+          and
+          <strong>
+           span
+          </strong>
+          of output .
+         </p>
+         <dl class="py method">
+          <dt id="trescope.DisplayOutputDesc.id">
+           <code class="sig-name descname">
+            id
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             id
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             str
+             <span class="p">
+              ,
+             </span>
+             int
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/trescope/core/OutputManager.html#DisplayOutputDesc.id">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.DisplayOutputDesc.id" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Specify id of display output .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               id
+              </strong>
+              – ID of display output
+             </p>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              self , for chain call
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.DisplayOutputDesc.startAt">
+           <code class="sig-name descname">
+            startAt
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             rowStart
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             int
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             columnStart
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             int
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/trescope/core/OutputManager.html#DisplayOutputDesc.startAt">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.DisplayOutputDesc.startAt" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Specify start of display output .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 rowStart
+                </strong>
+                – Start row
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 columnStart
+                </strong>
+                – Start column
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              self , for chain call
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.DisplayOutputDesc.withSpan">
+           <code class="sig-name descname">
+            withSpan
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             rowSpan
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             int
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             columnSpan
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             int
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/trescope/core/OutputManager.html#DisplayOutputDesc.withSpan">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.DisplayOutputDesc.withSpan" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Specify span of display output .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 rowSpan
+                </strong>
+                – Rows to span
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 columnSpan
+                </strong>
+                – Columns to span
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              self , for chain call
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </dd>
+       </dl>
+       <h3 id="fileoutput">
+        <a class="toc-backref" href="#id5">
+         FileOutput
+        </a>
+        <a class="headerlink" href="#fileoutput" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <dl class="py class">
+        <dt id="trescope.FileOutputManager">
+         <em class="property">
+          class
+         </em>
+         <code class="sig-prename descclassname">
+          trescope.
+         </code>
+         <code class="sig-name descname">
+          FileOutputManager
+         </code>
+         <span class="sig-paren">
+          (
+         </span>
+         <em class="sig-param">
+          <span class="n">
+           directory
+          </span>
+          <span class="p">
+           :
+          </span>
+          <span class="n">
+           Union
+           <span class="p">
+            [
+           </span>
+           str
+           <span class="p">
+            ,
+           </span>
+           pathlib.Path
+           <span class="p">
+            ]
+           </span>
+          </span>
+         </em>
+         ,
+         <em class="sig-param">
+          <span class="n">
+           widthPixel
+          </span>
+          <span class="p">
+           :
+          </span>
+          <span class="n">
+           int
+          </span>
+          <span class="o">
+           =
+          </span>
+          <span class="default_value">
+           640
+          </span>
+         </em>
+         ,
+         <em class="sig-param">
+          <span class="n">
+           heightPixel
+          </span>
+          <span class="p">
+           :
+          </span>
+          <span class="n">
+           int
+          </span>
+          <span class="o">
+           =
+          </span>
+          <span class="default_value">
+           480
+          </span>
+         </em>
+         <span class="sig-paren">
+          )
+         </span>
+         <a class="reference internal" href="../_modules/trescope/core/OutputManager.html#FileOutputManager">
+          <span class="viewcode-link">
+           [source]
+          </span>
+         </a>
+         <a class="headerlink" href="#trescope.FileOutputManager" title="Permalink to this definition">
+          ¶
+         </a>
+        </dt>
+        <dd>
+         <p>
+          Specify output as file , plot data to image file .
+         </p>
+         <dl class="field-list simple">
+          <dt class="field-odd">
+           Parameters
+          </dt>
+          <dd class="field-odd">
+           <ul class="simple">
+            <li>
+             <p>
+              <strong>
+               directory
+              </strong>
+              – Directory where image file generated
+             </p>
+            </li>
+            <li>
+             <p>
+              <strong>
+               widthPixel
+              </strong>
+              – image width
+             </p>
+            </li>
+            <li>
+             <p>
+              <strong>
+               heightPixel
+              </strong>
+              – image height
+             </p>
+            </li>
+           </ul>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.FileOutputManager.add">
+           <code class="sig-name descname">
+            add
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             outputDesc
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             trescope.core.OutputManager.FileOutputDesc
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/trescope/core/OutputManager.html#FileOutputManager.add">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.FileOutputManager.add" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Add output description .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               outputDesc
+              </strong>
+              – File output description to specify
+              <strong>
+               output id
+              </strong>
+              (file names)
+             </p>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              self , for chain call
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </dd>
+       </dl>
+       <dl class="py class">
+        <dt id="trescope.FileOutputDesc">
+         <em class="property">
+          class
+         </em>
+         <code class="sig-prename descclassname">
+          trescope.
+         </code>
+         <code class="sig-name descname">
+          FileOutputDesc
+         </code>
+         <a class="reference internal" href="../_modules/trescope/core/OutputManager.html#FileOutputDesc">
+          <span class="viewcode-link">
+           [source]
+          </span>
+         </a>
+         <a class="headerlink" href="#trescope.FileOutputDesc" title="Permalink to this definition">
+          ¶
+         </a>
+        </dt>
+        <dd>
+         <p>
+          Display output description , specify
+          <strong>
+           id
+          </strong>
+          (name of image file) of output .
+         </p>
+         <dl class="py method">
+          <dt id="trescope.FileOutputDesc.id">
+           <code class="sig-name descname">
+            id
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             id
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             str
+             <span class="p">
+              ,
+             </span>
+             int
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/trescope/core/OutputManager.html#FileOutputDesc.id">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.FileOutputDesc.id" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Specify id of file output .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               id
+              </strong>
+              – ID of file output
+             </p>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              self , for chain call
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </dd>
+       </dl>
+       <h2 id="output-and-input">
+        <a class="toc-backref" href="#id6">
+         Output and Input
+        </a>
+        <a class="headerlink" href="#output-and-input" title="Permalink to this headline">
+         ¶
+        </a>
+       </h2>
+       <p>
+        In trescope , we use
+        <a class="reference internal" href="#trescope.Output" title="trescope.Output">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           trescope.Output
+          </span>
+         </code>
+        </a>
+        for data plotting and
+        <a class="reference internal" href="#trescope.Input" title="trescope.Input">
+         <code class="xref py py-mod docutils literal notranslate">
+          <span class="pre">
+           trescope.Input
+          </span>
+         </code>
+        </a>
+        for user input .
+       </p>
+       <h3 id="output">
+        <a class="toc-backref" href="#id7">
+         Output
+        </a>
+        <a class="headerlink" href="#output" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <dl class="py class">
+        <dt id="trescope.Output">
+         <em class="property">
+          class
+         </em>
+         <code class="sig-prename descclassname">
+          trescope.
+         </code>
+         <code class="sig-name descname">
+          Output
+         </code>
+         <span class="sig-paren">
+          (
+         </span>
+         <em class="sig-param">
+          <span class="n">
+           id
+          </span>
+          <span class="p">
+           :
+          </span>
+          <span class="n">
+           str
+          </span>
+         </em>
+         ,
+         <em class="sig-param">
+          <span class="n">
+           trescope
+          </span>
+         </em>
+         <span class="sig-paren">
+          )
+         </span>
+         <a class="reference internal" href="../_modules/trescope/core/Output.html#Output">
+          <span class="viewcode-link">
+           [source]
+          </span>
+         </a>
+         <a class="headerlink" href="#trescope.Output" title="Permalink to this definition">
+          ¶
+         </a>
+        </dt>
+        <dd>
+         <p>
+          Output for plotting data .
+         </p>
+         <dl class="py method">
+          <dt id="trescope.Output.asInput">
+           <code class="sig-name descname">
+            asInput
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <span class="sig-paren">
+            )
+           </span>
+           → trescope.core.Input.Input
+           <a class="reference internal" href="../_modules/trescope/core/Output.html#Output.asInput">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Output.asInput" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Change to input for add control .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Returns
+            </dt>
+            <dd class="field-odd">
+             <p>
+              Input
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Output.clear">
+           <code class="sig-name descname">
+            clear
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/trescope/core/Output.html#Output.clear">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Output.clear" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Clear output .
+           </p>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Output.flush">
+           <code class="sig-name descname">
+            flush
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/trescope/core/Output.html#Output.flush">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Output.flush" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Flush data to file , no influence for display output .
+           </p>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Output.plotAxisHelper3D">
+           <code class="sig-name descname">
+            plotAxisHelper3D
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/trescope/core/Output.html#Output.plotAxisHelper3D">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Output.plotAxisHelper3D" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Plot 3d axis helper .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Returns
+            </dt>
+            <dd class="field-odd">
+             <p>
+              Content
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Output.plotFRONT3D">
+           <code class="sig-name descname">
+            plotFRONT3D
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             houseLayoutFile
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             str
+             <span class="p">
+              ,
+             </span>
+             pathlib.Path
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           → trescope.core.Content.Content
+           <a class="reference internal" href="../_modules/trescope/core/Output.html#Output.plotFRONT3D">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Output.plotFRONT3D" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Plot FRONT3D scene .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               houseLayoutFile
+              </strong>
+              – Scene file
+             </p>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              Content
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Output.plotGraph">
+           <code class="sig-name descname">
+            plotGraph
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             vertex
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             link
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             edge
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           → trescope.core.Content.Content
+           <a class="reference internal" href="../_modules/trescope/core/Output.html#Output.plotGraph">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Output.plotGraph" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Plot graph .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 vertex
+                </strong>
+                – vertex
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 link
+                </strong>
+                – link
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 edge
+                </strong>
+                – edge
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              Content
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Output.plotHeatMap">
+           <code class="sig-name descname">
+            plotHeatMap
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             intensity2DArray
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/trescope/core/Output.html#Output.plotHeatMap">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Output.plotHeatMap" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Plot heatmap .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               intensity2DArray
+              </strong>
+              – intensity
+             </p>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              Content
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Output.plotHistogram">
+           <code class="sig-name descname">
+            plotHistogram
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             x
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           → trescope.core.Content.Content
+           <a class="reference internal" href="../_modules/trescope/core/Output.html#Output.plotHistogram">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Output.plotHistogram" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Plot histogram .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               x
+              </strong>
+              – x
+             </p>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              Content
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Output.plotImage">
+           <code class="sig-name descname">
+            plotImage
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             remoteOrLocalPath
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             str
+             <span class="p">
+              ,
+             </span>
+             pathlib.Path
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           → trescope.core.Content.Content
+           <a class="reference internal" href="../_modules/trescope/core/Output.html#Output.plotImage">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Output.plotImage" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Plot image .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               remoteOrLocalPath
+              </strong>
+              – Image local path or url
+             </p>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              Content
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Output.plotLineSegment">
+           <code class="sig-name descname">
+            plotLineSegment
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             x
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             y
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           → trescope.core.Content.Content
+           <a class="reference internal" href="../_modules/trescope/core/Output.html#Output.plotLineSegment">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Output.plotLineSegment" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Plot line segment .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 x
+                </strong>
+                – x
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 y
+                </strong>
+                – y
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              Content
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Output.plotLollipop3D">
+           <code class="sig-name descname">
+            plotLollipop3D
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             u
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             v
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             w
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           → trescope.core.Content.Content
+           <a class="reference internal" href="../_modules/trescope/core/Output.html#Output.plotLollipop3D">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Output.plotLollipop3D" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Plot lollipop .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 u
+                </strong>
+                – u
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 v
+                </strong>
+                – v
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 w
+                </strong>
+                – w
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              Content
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Output.plotMesh3D">
+           <code class="sig-name descname">
+            plotMesh3D
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             x
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             y
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             z
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           → trescope.core.Content.Content
+           <a class="reference internal" href="../_modules/trescope/core/Output.html#Output.plotMesh3D">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Output.plotMesh3D" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Plot mesh .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 x
+                </strong>
+                – x
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 y
+                </strong>
+                – y
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 z
+                </strong>
+                – z
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              Content
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Output.plotPie">
+           <code class="sig-name descname">
+            plotPie
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             label
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             value
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           → trescope.core.Content.Content
+           <a class="reference internal" href="../_modules/trescope/core/Output.html#Output.plotPie">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Output.plotPie" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Plot pie .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 label
+                </strong>
+                – label
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 value
+                </strong>
+                – value
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              Content
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Output.plotScatter2D">
+           <code class="sig-name descname">
+            plotScatter2D
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             x
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             y
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           → trescope.core.Content.Content
+           <a class="reference internal" href="../_modules/trescope/core/Output.html#Output.plotScatter2D">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Output.plotScatter2D" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Plot 2D scatter .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 x
+                </strong>
+                – x
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 y
+                </strong>
+                – y
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              Content
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Output.plotScatter3D">
+           <code class="sig-name descname">
+            plotScatter3D
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             x
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             y
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             z
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           → trescope.core.Content.Content
+           <a class="reference internal" href="../_modules/trescope/core/Output.html#Output.plotScatter3D">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Output.plotScatter3D" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Plot 3D scatter .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 x
+                </strong>
+                – x
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 y
+                </strong>
+                – y
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 z
+                </strong>
+                – z
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              Content
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Output.plotSurface3D">
+           <code class="sig-name descname">
+            plotSurface3D
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             intensity2DArray
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           → trescope.core.Content.Content
+           <a class="reference internal" href="../_modules/trescope/core/Output.html#Output.plotSurface3D">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Output.plotSurface3D" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Plot surface .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               intensity2DArray
+              </strong>
+              – intensity
+             </p>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              Content
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Output.plotVectorField3D">
+           <code class="sig-name descname">
+            plotVectorField3D
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             u
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             v
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             w
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           → trescope.core.Content.Content
+           <a class="reference internal" href="../_modules/trescope/core/Output.html#Output.plotVectorField3D">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Output.plotVectorField3D" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Plot 3D vector field .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 u
+                </strong>
+                – u
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 v
+                </strong>
+                – v
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 w
+                </strong>
+                – w
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              Content
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Output.plotViolin">
+           <code class="sig-name descname">
+            plotViolin
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             x
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           → trescope.core.Content.Content
+           <a class="reference internal" href="../_modules/trescope/core/Output.html#Output.plotViolin">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Output.plotViolin" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Plot violin , probability density .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               x
+              </strong>
+              – x
+             </p>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              Content
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Output.plotVolume3D">
+           <code class="sig-name descname">
+            plotVolume3D
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             x
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             y
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             z
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             value
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           → trescope.core.Content.Content
+           <a class="reference internal" href="../_modules/trescope/core/Output.html#Output.plotVolume3D">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Output.plotVolume3D" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Plot volume .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 x
+                </strong>
+                – x
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 y
+                </strong>
+                – y
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 z
+                </strong>
+                – z
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 value
+                </strong>
+                – value
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              Content
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Output.plotWireframe3D">
+           <code class="sig-name descname">
+            plotWireframe3D
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             x
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             y
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             z
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           → trescope.core.Content.Content
+           <a class="reference internal" href="../_modules/trescope/core/Output.html#Output.plotWireframe3D">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Output.plotWireframe3D" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Plot wireframe .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 x
+                </strong>
+                – x
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 y
+                </strong>
+                – y
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 z
+                </strong>
+                – z
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              Content
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Output.updateLayout">
+           <code class="sig-name descname">
+            updateLayout
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             layout
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             trescope.core.Layout.Layout
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/trescope/core/Output.html#Output.updateLayout">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Output.updateLayout" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Update layout .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               layout
+              </strong>
+              – layout
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </dd>
+       </dl>
+       <h3 id="input">
+        <a class="toc-backref" href="#id8">
+         Input
+        </a>
+        <a class="headerlink" href="#input" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <dl class="py class">
+        <dt id="trescope.Input">
+         <em class="property">
+          class
+         </em>
+         <code class="sig-prename descclassname">
+          trescope.
+         </code>
+         <code class="sig-name descname">
+          Input
+         </code>
+         <span class="sig-paren">
+          (
+         </span>
+         <em class="sig-param">
+          <span class="n">
+           host
+          </span>
+         </em>
+         <span class="sig-paren">
+          )
+         </span>
+         <a class="reference internal" href="../_modules/trescope/core/Input.html#Input">
+          <span class="viewcode-link">
+           [source]
+          </span>
+         </a>
+         <a class="headerlink" href="#trescope.Input" title="Permalink to this definition">
+          ¶
+         </a>
+        </dt>
+        <dd>
+         <p>
+          Input for adding control , only works for display output . By adding control , you can input user information to control program
+execution to complete some jobs , such as labelling . Input data will return by
+          <a class="reference internal" href="#trescope.Trescope.breakPoint" title="trescope.Trescope.breakPoint">
+           <code class="xref py py-meth docutils literal notranslate">
+            <span class="pre">
+             Trescope.breakPoint()
+            </span>
+           </code>
+          </a>
+         </p>
+         <dl class="py method">
+          <dt id="trescope.Input.addControl">
+           <code class="sig-name descname">
+            addControl
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             controlNode
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             trescope.controller.ControllerNode.ControllerNode
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/trescope/core/Input.html#Input.addControl">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Input.addControl" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Add control .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               controlNode
+              </strong>
+              – control
+             </p>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              self , for chain call
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </dd>
+       </dl>
+       <h3 id="content">
+        <a class="toc-backref" href="#id9">
+         Content
+        </a>
+        <a class="headerlink" href="#content" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <dl class="py class">
+        <dt id="trescope.Content">
+         <em class="property">
+          class
+         </em>
+         <code class="sig-prename descclassname">
+          trescope.
+         </code>
+         <code class="sig-name descname">
+          Content
+         </code>
+         <span class="sig-paren">
+          (
+         </span>
+         <em class="sig-param">
+          <span class="n">
+           output
+          </span>
+         </em>
+         ,
+         <em class="sig-param">
+          <span class="o">
+           **
+          </span>
+          <span class="n">
+           kwargs
+          </span>
+         </em>
+         <span class="sig-paren">
+          )
+         </span>
+         <a class="reference internal" href="../_modules/trescope/core/Content.html#Content">
+          <span class="viewcode-link">
+           [source]
+          </span>
+         </a>
+         <a class="headerlink" href="#trescope.Content" title="Permalink to this definition">
+          ¶
+         </a>
+        </dt>
+        <dd>
+         <p>
+          Contains all information to plot data , basic data and config of data .
+         </p>
+         <dl class="py method">
+          <dt id="trescope.Content.withConfig">
+           <code class="sig-name descname">
+            withConfig
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             config
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             trescope.config.Config.Config
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           → None
+           <a class="reference internal" href="../_modules/trescope/core/Content.html#Content.withConfig">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Content.withConfig" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Specify config and commit all data to plot .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               config
+              </strong>
+              – config , see
+              <code class="xref py py-mod docutils literal notranslate">
+               <span class="pre">
+                trescope.config
+               </span>
+              </code>
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </dd>
+       </dl>
+       <h2 id="layout">
+        <a class="toc-backref" href="#id10">
+         Layout
+        </a>
+        <a class="headerlink" href="#layout" title="Permalink to this headline">
+         ¶
+        </a>
+       </h2>
+       <dl class="py class">
+        <dt id="trescope.Layout">
+         <em class="property">
+          class
+         </em>
+         <code class="sig-prename descclassname">
+          trescope.
+         </code>
+         <code class="sig-name descname">
+          Layout
+         </code>
+         <a class="reference internal" href="../_modules/trescope/core/Layout.html#Layout">
+          <span class="viewcode-link">
+           [source]
+          </span>
+         </a>
+         <a class="headerlink" href="#trescope.Layout" title="Permalink to this definition">
+          ¶
+         </a>
+        </dt>
+        <dd>
+         <p>
+          Specify output layout , such as title , axis , camera (if 3d data) and so on .
+         </p>
+         <dl class="py method">
+          <dt id="trescope.Layout.axisUniformScale">
+           <code class="sig-name descname">
+            axisUniformScale
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             axisUniformScale
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             bool
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/trescope/core/Layout.html#Layout.axisUniformScale">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Layout.axisUniformScale" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Specify axis uniform scale or not .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               axisUniformScale
+              </strong>
+              – True or False , default True
+             </p>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              self , for chain call
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Layout.axisXTicks">
+           <code class="sig-name descname">
+            axisXTicks
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             tickValues
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             Union
+             <span class="p">
+              [
+             </span>
+             List
+             <span class="p">
+              [
+             </span>
+             float
+             <span class="p">
+              ]
+             </span>
+             <span class="p">
+              ,
+             </span>
+             numpy.ndarray
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             tickTexts
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             List
+             <span class="p">
+              [
+             </span>
+             str
+             <span class="p">
+              ]
+             </span>
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/trescope/core/Layout.html#Layout.axisXTicks">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Layout.axisXTicks" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Specify x axis ticks .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 tickValues
+                </strong>
+                – values of ticks
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 tickTexts
+                </strong>
+                – text of ticks
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              self , for chain call
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Layout.camera">
+           <code class="sig-name descname">
+            camera
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             camera
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             trescope.config.Camera
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/trescope/core/Layout.html#Layout.camera">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Layout.camera" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Specify camera , only works for 3d data .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               camera
+              </strong>
+              – camera
+             </p>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              self , for chain call
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Layout.hoverLabelStyle">
+           <code class="sig-name descname">
+            hoverLabelStyle
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             textColor
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             int
+            </span>
+           </em>
+           ,
+           <em class="sig-param">
+            <span class="n">
+             backgroundColor
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             int
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/trescope/core/Layout.html#Layout.hoverLabelStyle">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Layout.hoverLabelStyle" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Specify hover label style .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <ul class="simple">
+              <li>
+               <p>
+                <strong>
+                 textColor
+                </strong>
+                – text color
+               </p>
+              </li>
+              <li>
+               <p>
+                <strong>
+                 backgroundColor
+                </strong>
+                – background color
+               </p>
+              </li>
+             </ul>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              self , for chain call
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Layout.legendOrientation">
+           <code class="sig-name descname">
+            legendOrientation
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             orientation
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             str
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/trescope/core/Layout.html#Layout.legendOrientation">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Layout.legendOrientation" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Specify legend orientation .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               orientation
+              </strong>
+              –
+              <cite>
+               vertical
+              </cite>
+              or
+              <cite>
+               horizontal
+              </cite>
+              , default
+              <cite>
+               vertical
+              </cite>
+             </p>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              self , for chain call
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Layout.showLegend">
+           <code class="sig-name descname">
+            showLegend
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             show
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             bool
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/trescope/core/Layout.html#Layout.showLegend">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Layout.showLegend" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Show legend or not .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               show
+              </strong>
+              – True or False , default True
+             </p>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              self , for chain call
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+         <dl class="py method">
+          <dt id="trescope.Layout.title">
+           <code class="sig-name descname">
+            title
+           </code>
+           <span class="sig-paren">
+            (
+           </span>
+           <em class="sig-param">
+            <span class="n">
+             title
+            </span>
+            <span class="p">
+             :
+            </span>
+            <span class="n">
+             str
+            </span>
+           </em>
+           <span class="sig-paren">
+            )
+           </span>
+           <a class="reference internal" href="../_modules/trescope/core/Layout.html#Layout.title">
+            <span class="viewcode-link">
+             [source]
+            </span>
+           </a>
+           <a class="headerlink" href="#trescope.Layout.title" title="Permalink to this definition">
+            ¶
+           </a>
+          </dt>
+          <dd>
+           <p>
+            Specify output title .
+           </p>
+           <dl class="field-list simple">
+            <dt class="field-odd">
+             Parameters
+            </dt>
+            <dd class="field-odd">
+             <p>
+              <strong>
+               title
+              </strong>
+              – title
+             </p>
+            </dd>
+            <dt class="field-even">
+             Returns
+            </dt>
+            <dd class="field-even">
+             <p>
+              self , for chain call
+             </p>
+            </dd>
+           </dl>
+          </dd>
+         </dl>
+        </dd>
+       </dl>
+      </article>
+     </div>
+    </div>
+   </main>
+  </div>
+  <footer class="md-footer">
+   <div class="md-footer-nav">
+    <nav class="md-footer-nav__inner md-grid">
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--prev" href="../tutorial/interactive_control/index.html" rel="prev" title="Interactive control">
+      <div class="md-flex__cell md-flex__cell--shrink">
+       <i class="md-icon md-icon--arrow-back md-footer-nav__button">
+       </i>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+       <span class="md-flex__ellipsis">
+        <span class="md-footer-nav__direction">
+         Previous
+        </span>
+        Interactive control
+       </span>
+      </div>
+     </a>
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--next" href="trescope.config.html" rel="next" title="trescope.config">
+      <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+       <span class="md-flex__ellipsis">
+        <span class="md-footer-nav__direction">
+         Next
+        </span>
+        trescope.config
+       </span>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+       <i class="md-icon md-icon--arrow-forward md-footer-nav__button">
+       </i>
+      </div>
+     </a>
+    </nav>
+   </div>
+   <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+     <div class="md-footer-copyright">
+      <div class="md-footer-copyright__highlight">
+       © Copyright 2021, YunzhongTianjing, jeannotes.
+      </div>
+      Created using
+      <a href="http://www.sphinx-doc.org/">
+       Sphinx
+      </a>
+      3.4.2.
+             and
+      <a href="https://github.com/bashtage/sphinx-material/">
+       Material for
+              Sphinx
+      </a>
+     </div>
+    </div>
+   </div>
+  </footer>
+  <script src="../_static/javascripts/application.js">
+  </script>
+  <script>
+   app.initialize({version: "1.0.4", url: {base: ".."}})
+  </script>
+ </body>
+</html>

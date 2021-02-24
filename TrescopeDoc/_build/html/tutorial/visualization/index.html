@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <meta content="width=device-width,initial-scale=1" name="viewport"/>
+  <meta content="ie=edge" http-equiv="x-ua-compatible"/>
+  <meta content="Copy to clipboard" name="lang:clipboard.copy"/>
+  <meta content="Copied to clipboard" name="lang:clipboard.copied"/>
+  <meta content="en" name="lang:search.language"/>
+  <meta content="True" name="lang:search.pipeline.stopwords"/>
+  <meta content="True" name="lang:search.pipeline.trimmer"/>
+  <meta content="No matching documents" name="lang:search.result.none"/>
+  <meta content="1 matching document" name="lang:search.result.one"/>
+  <meta content="# matching documents" name="lang:search.result.other"/>
+  <meta content="[\s\-]+" name="lang:search.tokenizer"/>
+  <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css?family=Roboto+Mono:400,500,700|Roboto:300,400,400i,700&amp;display=fallback" rel="stylesheet"/>
+  <style>
+   body,
+      input {
+        font-family: "Roboto", "Helvetica Neue", Helvetica, Arial, sans-serif
+      }
+
+      code,
+      kbd,
+      pre {
+        font-family: "Roboto Mono", "Courier New", Courier, monospace
+      }
+  </style>
+  <link href="../../_static/stylesheets/application.css" rel="stylesheet"/>
+  <link href="../../_static/stylesheets/application-palette.css" rel="stylesheet"/>
+  <link href="../../_static/stylesheets/application-fixes.css" rel="stylesheet"/>
+  <link href="../../_static/fonts/material-icons.css" rel="stylesheet"/>
+  <meta content="#2196f3" name="theme-color"/>
+  <script src="../../_static/javascripts/modernizr.js">
+  </script>
+  <link href="../../_static/_static/favicon.png" rel="apple-touch-icon"/>
+  <title>
+   Visualization — Trescope
+  </title>
+  <link href="../../_static/pygments.css" rel="stylesheet" type="text/css"/>
+  <link href="../../_static/material.css" rel="stylesheet" type="text/css"/>
+  <link href="../../_static/copybutton.css" rel="stylesheet" type="text/css"/>
+  <script data-url_root="../../" id="documentation_options" src="../../_static/documentation_options.js">
+  </script>
+  <script src="../../_static/jquery.js">
+  </script>
+  <script src="../../_static/underscore.js">
+  </script>
+  <script src="../../_static/doctools.js">
+  </script>
+  <script src="../../_static/clipboard.min.js">
+  </script>
+  <script src="../../_static/copybutton.js">
+  </script>
+  <script crossorigin="anonymous" integrity="sha256-Ae2Vz/4ePdIu6ZyI/5ZGsYnb+m0JlOmKPjt6XZ9JJkA=" src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.4/require.min.js">
+  </script>
+  <link href="../../_static/favicon.ico" rel="shortcut icon"/>
+  <link href="../../genindex.html" rel="index" title="Index"/>
+  <link href="../../search.html" rel="search" title="Search"/>
+  <link href="../labeling/index.html" rel="next" title="Labeling"/>
+  <link href="../installation/index.html" rel="prev" title="Installation"/>
+  <link href="../../_static/_static/favicon.png" rel="apple-touch-icon"/>
+ </head>
+ <body data-md-color-accent="cyan" data-md-color-primary="#4253af" dir="ltr">
+  <svg class="md-svg">
+   <defs data-children-count="0">
+    <svg height="448" id="__github" viewbox="0 0 416 448" width="416" xmlns="http://www.w3.org/2000/svg">
+     <path d="M160 304q0 10-3.125 20.5t-10.75 19T128 352t-18.125-8.5-10.75-19T96 304t3.125-20.5 10.75-19T128 256t18.125 8.5 10.75 19T160 304zm160 0q0 10-3.125 20.5t-10.75 19T288 352t-18.125-8.5-10.75-19T256 304t3.125-20.5 10.75-19T288 256t18.125 8.5 10.75 19T320 304zm40 0q0-30-17.25-51T296 232q-10.25 0-48.75 5.25Q229.5 240 208 240t-39.25-2.75Q130.75 232 120 232q-29.5 0-46.75 21T56 304q0 22 8 38.375t20.25 25.75 30.5 15 35 7.375 37.25 1.75h42q20.5 0 37.25-1.75t35-7.375 30.5-15 20.25-25.75T360 304zm56-44q0 51.75-15.25 82.75-9.5 19.25-26.375 33.25t-35.25 21.5-42.5 11.875-42.875 5.5T212 416q-19.5 0-35.5-.75t-36.875-3.125-38.125-7.5-34.25-12.875T37 371.5t-21.5-28.75Q0 312 0 260q0-59.25 34-99-6.75-20.5-6.75-42.5 0-29 12.75-54.5 27 0 47.5 9.875t47.25 30.875Q171.5 96 212 96q37 0 70 8 26.25-20.5 46.75-30.25T376 64q12.75 25.5 12.75 54.5 0 21.75-6.75 42 34 40 34 99.5z" fill="currentColor">
+     </path>
+    </svg>
+   </defs>
+  </svg>
+  <input class="md-toggle" data-md-toggle="drawer" id="__drawer" type="checkbox"/>
+  <input class="md-toggle" data-md-toggle="search" id="__search" type="checkbox"/>
+  <label class="md-overlay" data-md-component="overlay" for="__drawer">
+  </label>
+  <a class="md-skip" href="#tutorial/visualization/index" tabindex="1">
+   Skip to content
+  </a>
+  <header class="md-header" data-md-component="header">
+   <nav class="md-header-nav md-grid">
+    <div class="md-flex navheader">
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <a class="md-header-nav__button md-logo" href="../../index.html" title="Trescope">
+       <i class="md-icon">
+       </i>
+      </a>
+     </div>
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer">
+      </label>
+     </div>
+     <div class="md-flex__cell md-flex__cell--stretch">
+      <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+       <span class="md-header-nav__topic">
+        Trescope
+       </span>
+       <span class="md-header-nav__topic">
+        Visualization
+       </span>
+      </div>
+     </div>
+     <div class="md-flex__cell md-flex__cell--shrink">
+      <label class="md-icon md-icon--search md-header-nav__button" for="__search">
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+       <label class="md-search__overlay" for="__search">
+       </label>
+       <div class="md-search__inner" role="search">
+        <form action="../../search.html" class="md-search__form" method="GET" name="search">
+         <input autocapitalize="off" autocomplete="off" class="md-search__input" data-md-component="query" data-md-state="active" name="q" placeholder="Search" spellcheck="false" type="text"/>
+         <label class="md-icon md-search__icon" for="__search">
+         </label>
+         <button class="md-icon md-search__icon" data-md-component="reset" tabindex="-1" type="reset">
+          
+         </button>
+        </form>
+        <div class="md-search__output">
+         <div class="md-search__scrollwrap" data-md-scrollfix="">
+          <div class="md-search-result" data-md-component="result">
+           <div class="md-search-result__meta">
+            Type to start searching
+           </div>
+           <ol class="md-search-result__list">
+           </ol>
+          </div>
+         </div>
+        </div>
+       </div>
+      </div>
+     </div>
+    </div>
+   </nav>
+  </header>
+  <div class="md-container">
+   <main class="md-main">
+    <div class="md-main__inner md-grid" data-md-component="container">
+     <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav class="md-nav md-nav--primary" data-md-level="0">
+         <label class="md-nav__title md-nav__title--site" for="__drawer">
+          <a class="md-nav__button md-logo" href="../../index.html" title="Trescope">
+           <i class="md-icon">
+           </i>
+          </a>
+          <a href="../../index.html" title="Trescope">
+           Trescope
+          </a>
+         </label>
+         <ul class="md-nav__list">
+          <li class="md-nav__item">
+           <span class="md-nav__link caption">
+            <span class="caption-text">
+             Tutorial
+            </span>
+           </span>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../installation/index.html">
+            Installation
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <input class="md-toggle md-nav__toggle" data-md-toggle="toc" id="__toc" type="checkbox"/>
+           <label class="md-nav__link md-nav__link--active" for="__toc">
+            Visualization
+           </label>
+           <a class="md-nav__link md-nav__link--active" href="#">
+            Visualization
+           </a>
+           <nav class="md-nav md-nav--secondary">
+            <label class="md-nav__title" for="__toc">
+             Contents
+            </label>
+            <ul class="md-nav__list" data-md-scrollfix="">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#tutorial-visualization-index--page-root">
+               Visualization
+              </a>
+              <nav class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#initialization">
+                  initialization
+                 </a>
+                 <nav class="md-nav">
+                  <ul class="md-nav__list">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#start-backend">
+                     Start backend
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#output-select">
+                     Output select
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#output-clear">
+                     Output clear
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#d-plot">
+                  2d plot
+                 </a>
+                 <nav class="md-nav">
+                  <ul class="md-nav__list">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#visualise-2d-points">
+                     visualise 2d points
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#set-up-breakpoint">
+                     set up breakpoint
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#visualise-heatmap">
+                     visualise heatmap
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#visualise-surface">
+                     visualise surface
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#visualise-pie-figure">
+                     visualise pie figure
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#graph-plot">
+                  graph plot
+                 </a>
+                 <nav class="md-nav">
+                  <ul class="md-nav__list">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#visualise-graph">
+                     visualise graph
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#visualise-edge">
+                     visualise edge
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#id1">
+                  3d plot
+                 </a>
+                 <nav class="md-nav">
+                  <ul class="md-nav__list">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#visualise-3d-points">
+                     visualise 3d points
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#different-point-colors">
+                     different point colors
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#visualise-vectors">
+                     visualise vectors
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#mesh-plot">
+                  mesh plot
+                 </a>
+                 <nav class="md-nav">
+                  <ul class="md-nav__list">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#visualise-mesh">
+                     visualise mesh
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#different-mesh-face-colors">
+                     different mesh face colors
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#visualise-mesh-with-texture">
+                     visualise mesh with texture
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#visualise-mesh-with-wireframe">
+                     visualise mesh with wireframe
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#d-front-plot">
+                  3d front plot
+                 </a>
+                 <nav class="md-nav">
+                  <ul class="md-nav__list">
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#different-rendertype">
+                     different renderType
+                    </a>
+                   </li>
+                   <li class="md-nav__item">
+                    <a class="md-nav__link" href="#different-view-type">
+                     different view Type
+                    </a>
+                   </li>
+                  </ul>
+                 </nav>
+                </li>
+               </ul>
+              </nav>
+             </li>
+            </ul>
+           </nav>
+           <ul class="md-nav__list">
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#initialization">
+              initialization
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#d-plot">
+              2d plot
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#graph-plot">
+              graph plot
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#id1">
+              3d plot
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#mesh-plot">
+              mesh plot
+             </a>
+            </li>
+            <li class="md-nav__item">
+             <a class="md-nav__link" href="#d-front-plot">
+              3d front plot
+             </a>
+            </li>
+           </ul>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../labeling/index.html">
+            Labeling
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../interactive_control/index.html">
+            Interactive control
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <span class="md-nav__link caption">
+            <span class="caption-text">
+             API Reference(Python)
+            </span>
+           </span>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../../module/trescope.html">
+            trescope
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../../module/trescope.config.html">
+            trescope.config
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../../module/trescope.controller.html">
+            trescope.controller
+           </a>
+          </li>
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="../../module/trescope.toolbox.html">
+            trescope.toolbox
+           </a>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+      <div class="md-sidebar__scrollwrap">
+       <div class="md-sidebar__inner">
+        <nav class="md-nav md-nav--secondary">
+         <label class="md-nav__title" for="__toc">
+          Contents
+         </label>
+         <ul class="md-nav__list" data-md-scrollfix="">
+          <li class="md-nav__item">
+           <a class="md-nav__link" href="#tutorial-visualization-index--page-root">
+            Visualization
+           </a>
+           <nav class="md-nav">
+            <ul class="md-nav__list">
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#initialization">
+               initialization
+              </a>
+              <nav class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#start-backend">
+                  Start backend
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#output-select">
+                  Output select
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#output-clear">
+                  Output clear
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#d-plot">
+               2d plot
+              </a>
+              <nav class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#visualise-2d-points">
+                  visualise 2d points
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#set-up-breakpoint">
+                  set up breakpoint
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#visualise-heatmap">
+                  visualise heatmap
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#visualise-surface">
+                  visualise surface
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#visualise-pie-figure">
+                  visualise pie figure
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#graph-plot">
+               graph plot
+              </a>
+              <nav class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#visualise-graph">
+                  visualise graph
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#visualise-edge">
+                  visualise edge
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#id1">
+               3d plot
+              </a>
+              <nav class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#visualise-3d-points">
+                  visualise 3d points
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#different-point-colors">
+                  different point colors
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#visualise-vectors">
+                  visualise vectors
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#mesh-plot">
+               mesh plot
+              </a>
+              <nav class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#visualise-mesh">
+                  visualise mesh
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#different-mesh-face-colors">
+                  different mesh face colors
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#visualise-mesh-with-texture">
+                  visualise mesh with texture
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#visualise-mesh-with-wireframe">
+                  visualise mesh with wireframe
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+             <li class="md-nav__item">
+              <a class="md-nav__link" href="#d-front-plot">
+               3d front plot
+              </a>
+              <nav class="md-nav">
+               <ul class="md-nav__list">
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#different-rendertype">
+                  different renderType
+                 </a>
+                </li>
+                <li class="md-nav__item">
+                 <a class="md-nav__link" href="#different-view-type">
+                  different view Type
+                 </a>
+                </li>
+               </ul>
+              </nav>
+             </li>
+            </ul>
+           </nav>
+          </li>
+         </ul>
+        </nav>
+       </div>
+      </div>
+     </div>
+     <div class="md-content">
+      <article class="md-content__inner md-typeset" role="main">
+       <h1 id="tutorial-visualization-index--page-root">
+        Visualization
+        <a class="headerlink" href="#tutorial-visualization-index--page-root" title="Permalink to this headline">
+         ¶
+        </a>
+       </h1>
+       <h2 id="initialization">
+        initialization
+        <a class="headerlink" href="#initialization" title="Permalink to this headline">
+         ¶
+        </a>
+       </h2>
+       <h3 id="start-backend">
+        Start backend
+        <a class="headerlink" href="#start-backend" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <p>
+        before start trescope, remember to start backend in terminal
+       </p>
+       <div class="highlight-bash notranslate">
+        <div class="highlight">
+         <pre><span></span>trescope
+</pre>
+        </div>
+       </div>
+       <p>
+        and then appears
+       </p>
+       <div class="highlight-bash notranslate">
+        <div class="highlight">
+         <pre><span></span>Trescope start with
+    task identifier: main ,
+    task directory: /home/*/.trescope
+Available on:
+    http://*.*.*.*:9000
+    http://*.*.*.*:9000
+</pre>
+        </div>
+       </div>
+       <p>
+        open second link in browser, then let’s follow the next tutorials
+       </p>
+       <div class="admonition hint">
+        <p class="admonition-title">
+         Hint
+        </p>
+        <p>
+         If one reinstall trescope, please restart the backend, or may waste tons of time.
+Attention!
+        </p>
+       </div>
+       <h3 id="output-select">
+        Output select
+        <a class="headerlink" href="#output-select" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <p>
+        trescope split window into multiple grids, rowly and columnly, one need to select the grid to plot 3d, 2d, etc.
+       </p>
+       <div class="highlight-python notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="n">Trescope</span><span class="p">()</span><span class="o">.</span><span class="n">initialize</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="n">simpleDisplayOutputs</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+</pre>
+        </div>
+       </div>
+       <p>
+        and one may see the following grids with the column size is 3, and row size is 1
+       </p>
+       <img alt="../../_images/window_initialise.png" src="../../_images/window_initialise.png"/>
+       <p>
+        to plot your object in the second grid, just use
+       </p>
+       <div class="highlight-python notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="n">Trescope</span><span class="p">()</span><span class="o">.</span><span class="n">selectOutput</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="o">****</span>
+</pre>
+        </div>
+       </div>
+       <p>
+        if one split your window into (4, 3) grids, and want to plot object in second grid, it will appears in grids[0][1] instead of grids[1][0].
+       </p>
+       <h3 id="output-clear">
+        Output clear
+        <a class="headerlink" href="#output-clear" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <p>
+        if one have batch of data to visualise, the batch size exceeds your grid size, and next time you plot following data, pay attention to clear the window.
+       </p>
+       <div class="highlight-bash notranslate">
+        <div class="highlight">
+         <pre><span></span>Trescope<span class="o">()</span>.selectOutput<span class="o">(</span><span class="m">2</span><span class="o">)</span>.clear<span class="o">()</span>
+</pre>
+        </div>
+       </div>
+       <h2 id="d-plot">
+        2d plot
+        <a class="headerlink" href="#d-plot" title="Permalink to this headline">
+         ¶
+        </a>
+       </h2>
+       <h3 id="visualise-2d-points">
+        visualise 2d points
+        <a class="headerlink" href="#visualise-2d-points" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <p>
+        to plot the next three points:
+       </p>
+       <div class="highlight-python notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span>
+<span class="mi">2</span><span class="p">,</span><span class="mi">1</span>
+<span class="mi">3</span><span class="p">,</span><span class="mi">1</span>
+</pre>
+        </div>
+       </div>
+       <p>
+        use the following command to plot them
+       </p>
+       <div class="highlight-python notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="n">Trescope</span><span class="p">()</span><span class="o">.</span><span class="n">selectOutput</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">plotScatter2D</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+<span class="p">)</span><span class="o">.</span><span class="n">withConfig</span><span class="p">(</span><span class="n">Scatter2DConfig</span><span class="p">()</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="s1">'plotScatter2D'</span><span class="p">)</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="mh">0xffff0000</span><span class="p">)</span><span class="o">.</span><span class="n">size</span><span class="p">(</span><span class="mi">1</span><span class="p">))</span>
+</pre>
+        </div>
+       </div>
+       <img alt="../../_images/plot_2d1.png" src="../../_images/plot_2d1.png"/>
+       <p>
+        <strong>
+         plotScatter2D
+        </strong>
+        read points using slightly different format, remember to split x,y into different lists like this.
+       </p>
+       <p>
+        <strong>
+         withConfig
+        </strong>
+        set the attributes to be visualised in  browser, check api inside, one may set color, size etc
+       </p>
+       <h3 id="set-up-breakpoint">
+        set up breakpoint
+        <a class="headerlink" href="#set-up-breakpoint" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <p>
+        sometimes to debug code, when visualise one image or points, one can set breakpoint in trescope, no need to
+set up breakpoint in code:
+       </p>
+       <div class="highlight-python notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="n">Trescope</span><span class="p">()</span><span class="o">.</span><span class="n">breakPoint</span><span class="p">(</span><span class="s1">'check'</span><span class="p">)</span>
+</pre>
+        </div>
+       </div>
+       <img alt="../../_images/plot_2d2.png" src="../../_images/plot_2d2.png"/>
+       <p>
+        now, the code stops at here, when click
+        <strong>
+         CONTINUE
+        </strong>
+        button, the code steps forward.
+       </p>
+       <h3 id="visualise-heatmap">
+        visualise heatmap
+        <a class="headerlink" href="#visualise-heatmap" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <p>
+        to plot a simple heatmap
+       </p>
+       <div class="highlight-python notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">Trescope</span><span class="p">()</span><span class="o">.</span><span class="n">selectOutput</span><span class="p">(</span><span class="mi">7</span><span class="p">)</span><span class="o">.</span><span class="n">plotHeatMap</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">)))</span><span class="o">.</span><span class="n">withConfig</span><span class="p">(</span><span class="n">HeatMapConfig</span><span class="p">()</span><span class="o">.</span><span class="n">useGL</span><span class="p">(</span><span class="kc">False</span><span class="p">))</span>
+</pre>
+        </div>
+       </div>
+       <img alt="../../_images/plot_heatmap.png" src="../../_images/plot_heatmap.png"/>
+       <h3 id="visualise-surface">
+        visualise surface
+        <a class="headerlink" href="#visualise-surface" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <p>
+        to plot a random surface
+       </p>
+       <div class="highlight-python notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+    <span class="n">Trescope</span><span class="p">()</span><span class="o">.</span><span class="n">selectOutput</span><span class="p">(</span><span class="mi">8</span><span class="p">)</span><span class="o">.</span><span class="n">plotSurface3D</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">((</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span><span class="o">.</span><span class="n">withConfig</span><span class="p">(</span><span class="n">Surface3DConfig</span><span class="p">())</span>
+</pre>
+        </div>
+       </div>
+       <img alt="../../_images/plot_surface.png" src="../../_images/plot_surface.png"/>
+       <h3 id="visualise-pie-figure">
+        visualise pie figure
+        <a class="headerlink" href="#visualise-pie-figure" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <p>
+        to plot a simple pie figure
+       </p>
+       <div class="highlight-python notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="n">Trescope</span><span class="p">()</span><span class="o">.</span><span class="n">selectOutput</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">plotPie</span><span class="p">([</span><span class="s1">'dog'</span><span class="p">,</span> <span class="s1">'cat'</span><span class="p">],</span> <span class="p">[</span><span class="mi">45</span><span class="p">,</span> <span class="mi">89</span><span class="p">])</span><span class="o">.</span><span class="n">withConfig</span><span class="p">(</span><span class="n">PieConfig</span><span class="p">())</span>
+</pre>
+        </div>
+       </div>
+       <img alt="../../_images/plot_pie.png" src="../../_images/plot_pie.png"/>
+       <h2 id="graph-plot">
+        graph plot
+        <a class="headerlink" href="#graph-plot" title="Permalink to this headline">
+         ¶
+        </a>
+       </h2>
+       <h3 id="visualise-graph">
+        visualise graph
+        <a class="headerlink" href="#visualise-graph" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <p>
+        for the next graph data composed of vertices and edges:
+       </p>
+       <div class="highlight-python notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="n">vertex</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mh">0xff0000</span><span class="p">],</span>
+                <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mh">0x00ff00</span><span class="p">],</span>
+                <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mh">0x0000ff</span><span class="p">],</span>
+                <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mh">0xffff00</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+<span class="n">link</span><span class="o">=</span><span class="p">[</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="p">],</span>
+<span class="n">edge</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">90</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">900</span><span class="p">,</span> <span class="mi">802</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">987</span><span class="p">,</span> <span class="mi">234</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">777</span><span class="p">,</span> <span class="mi">990</span><span class="p">],</span>
+              <span class="p">[</span><span class="mi">123</span><span class="p">,</span> <span class="mi">345</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+</pre>
+        </div>
+       </div>
+       <p>
+        use this command to plot:
+       </p>
+       <div class="highlight-python notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="p">(</span><span class="n">Trescope</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">selectOutput</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">plotGraph</span><span class="p">(</span>
+    <span class="n">vertex</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mh">0xff0000</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mh">0x00ff00</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mh">0x0000ff</span><span class="p">],</span> <span class="p">[</span><span class="mi">255</span><span class="p">,</span> <span class="mi">255</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mh">0xffff00</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span><span class="p">,</span>
+    <span class="n">link</span><span class="o">=</span><span class="p">[</span>
+        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+    <span class="p">],</span>
+    <span class="n">edge</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">90</span><span class="p">],</span> <span class="p">[</span><span class="mi">900</span><span class="p">,</span> <span class="mi">802</span><span class="p">],</span> <span class="p">[</span><span class="mi">987</span><span class="p">,</span> <span class="mi">234</span><span class="p">],</span> <span class="p">[</span><span class="mi">777</span><span class="p">,</span> <span class="mi">990</span><span class="p">],</span> <span class="p">[</span><span class="mi">123</span><span class="p">,</span> <span class="mi">345</span><span class="p">]])</span><span class="o">.</span><span class="n">T</span>
+<span class="p">)</span><span class="o">.</span><span class="n">withConfig</span><span class="p">(</span>
+    <span class="n">GraphConfig</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">vertexDescription</span><span class="p">([</span><span class="s1">'红'</span><span class="p">,</span> <span class="s1">'绿'</span><span class="p">,</span> <span class="s1">'蓝'</span><span class="p">,</span> <span class="s1">'黄'</span><span class="p">])</span>
+        <span class="o">.</span><span class="n">vertexSize</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">vertexColor</span><span class="p">([</span><span class="mh">0xff0000</span><span class="p">,</span> <span class="mh">0x00ff00</span><span class="p">,</span> <span class="mh">0x0000ff</span><span class="p">,</span> <span class="mh">0xffff00</span><span class="p">])</span>
+        <span class="o">.</span><span class="n">vertexOpacity</span><span class="p">(</span><span class="o">.</span><span class="mi">5</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">edgeDescription</span><span class="p">(</span><span class="s1">'edge'</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">edgeColor</span><span class="p">(</span><span class="s1">'black'</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">edgeWidth</span><span class="p">([</span><span class="mf">1.5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+        <span class="o">.</span><span class="n">edgeOpacity</span><span class="p">(</span><span class="o">.</span><span class="mi">3</span><span class="p">)</span>
+<span class="p">))</span>
+</pre>
+        </div>
+       </div>
+       <img alt="../../_images/plot_graph1.png" src="../../_images/plot_graph1.png"/>
+       <h3 id="visualise-edge">
+        visualise edge
+        <a class="headerlink" href="#visualise-edge" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <p>
+        if one put mouse pointer on the graph edge, the edge direction appears, with edge starting point,
+end point, as well as edge attributes
+       </p>
+       <img alt="../../_images/plot_graph2.png" src="../../_images/plot_graph2.png"/>
+       <h2 id="id1">
+        3d plot
+        <a class="headerlink" href="#id1" title="Permalink to this headline">
+         ¶
+        </a>
+       </h2>
+       <h3 id="visualise-3d-points">
+        visualise 3d points
+        <a class="headerlink" href="#visualise-3d-points" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <p>
+        to plot the next four points:
+       </p>
+       <div class="highlight-python notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+<span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span>
+<span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span>
+<span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span>
+</pre>
+        </div>
+       </div>
+       <p>
+        use the following command to plot them
+       </p>
+       <div class="highlight-python notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="n">Trescope</span><span class="p">()</span><span class="o">.</span><span class="n">selectOutput</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">plotScatter3D</span><span class="p">(</span>
+        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+        <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+    <span class="p">)</span><span class="o">.</span><span class="n">withConfig</span><span class="p">(</span><span class="n">Scatter3DConfig</span><span class="p">()</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="mh">0xffff0000</span><span class="p">)</span><span class="o">.</span><span class="n">mode</span><span class="p">([</span><span class="n">ScatterMode</span><span class="o">.</span><span class="n">MARKERS</span><span class="p">]))</span>
+</pre>
+        </div>
+       </div>
+       <img alt="../../_images/plot_point1.png" src="../../_images/plot_point1.png"/>
+       <p>
+        <strong>
+         plotScatter3D
+        </strong>
+        read points using slightly different format, remember to split x,y,z into different lists like this.
+       </p>
+       <p>
+        <strong>
+         withConfig
+        </strong>
+        set the attributes to be visualised in  browser, check api inside, one may set color, size etc
+       </p>
+       <h3 id="different-point-colors">
+        different point colors
+        <a class="headerlink" href="#different-point-colors" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <p>
+        to plot points with different colors, one can use the following command
+       </p>
+       <div class="highlight-python notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="n">label</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">color</span> <span class="o">=</span> <span class="p">[</span><span class="n">toolbox</span><span class="o">.</span><span class="n">color_from_label</span><span class="p">(</span><span class="n">_label</span><span class="p">)</span> <span class="k">for</span> <span class="n">_label</span> <span class="ow">in</span> <span class="n">label</span><span class="p">]</span>
+<span class="n">Trescope</span><span class="p">()</span><span class="o">.</span><span class="n">selectOutput</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">plotScatter3D</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">withConfig</span><span class="p">(</span><span class="n">Scatter3DConfig</span><span class="p">()</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="n">color</span><span class="p">)</span><span class="o">.</span><span class="n">mode</span><span class="p">([</span><span class="n">ScatterMode</span><span class="o">.</span><span class="n">MARKERS</span><span class="p">]))</span>
+</pre>
+        </div>
+       </div>
+       <img alt="../../_images/plot_point2.png" src="../../_images/plot_point2.png"/>
+       <h3 id="visualise-vectors">
+        visualise vectors
+        <a class="headerlink" href="#visualise-vectors" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <p>
+        to plot the next three vectors:
+       </p>
+       <div class="highlight-python notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="n">start</span> <span class="n">point</span>  <span class="o">-&gt;</span>  <span class="n">end</span> <span class="n">point</span>
+  <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>         <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+  <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>         <span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
+  <span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">0</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>         <span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">0</span><span class="p">)</span>
+</pre>
+        </div>
+       </div>
+       <p>
+        use the following command to plot them
+       </p>
+       <div class="highlight-python notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="n">Trescope</span><span class="p">()</span><span class="o">.</span><span class="n">selectOutput</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span><span class="o">.</span><span class="n">plotLollipop3D</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">withConfig</span><span class="p">(</span><span class="n">Lollipop3DConfig</span><span class="p">()</span><span class="o">.</span><span class="n">locations</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">],</span>
+                                          <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+                                          <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">name</span><span class="p">(</span><span class="s1">'plotLollipop3D'</span><span class="p">)</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="mh">0xffff0000</span><span class="p">))</span>
+</pre>
+        </div>
+       </div>
+       <img alt="../../_images/plot_vector.png" src="../../_images/plot_vector.png"/>
+       <p>
+        one can see that the cross is the starting point, the point is the end point
+       </p>
+       <h2 id="mesh-plot">
+        mesh plot
+        <a class="headerlink" href="#mesh-plot" title="Permalink to this headline">
+         ¶
+        </a>
+       </h2>
+       <h3 id="visualise-mesh">
+        visualise mesh
+        <a class="headerlink" href="#visualise-mesh" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <p>
+        to plot the next example mesh:
+       </p>
+       <div class="highlight-python notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="n">vertices</span><span class="p">:</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">face</span> <span class="n">indices</span><span class="p">:</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+</pre>
+        </div>
+       </div>
+       <p>
+        use the following command to plot them
+       </p>
+       <div class="highlight-python notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="n">Trescope</span><span class="p">()</span><span class="o">.</span><span class="n">selectOutput</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">plotMesh3D</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">withConfig</span><span class="p">(</span><span class="n">Mesh3DConfig</span><span class="p">()</span><span class="o">.</span><span class="n">indices</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+                                    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+                                    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="mh">0xffff00ff</span><span class="p">))</span>
+</pre>
+        </div>
+       </div>
+       <img alt="../../_images/plot_mesh1.png" src="../../_images/plot_mesh1.png"/>
+       <p>
+        like
+        <strong>
+         plotScatter3D
+        </strong>
+        ,
+        <strong>
+         plotMesh3D
+        </strong>
+        read points using same format, remember to split x,y,z into different lists like this.
+in
+        <strong>
+         Mesh3DConfig
+        </strong>
+        , one can set indices, color , above example show two faces, [0,1,3] is first triangle, and [3,1,2] is the second triangle
+       </p>
+       <h3 id="different-mesh-face-colors">
+        different mesh face colors
+        <a class="headerlink" href="#different-mesh-face-colors" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <p>
+        to plot mesh with different colors, one can use the following command
+       </p>
+       <div class="highlight-python notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="n">Trescope</span><span class="p">()</span><span class="o">.</span><span class="n">selectOutput</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">plotMesh3D</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">withConfig</span><span class="p">(</span><span class="n">Mesh3DConfig</span><span class="p">()</span><span class="o">.</span><span class="n">indices</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">faceColor</span><span class="p">([</span><span class="mh">0xffff0000</span><span class="p">,</span> <span class="mh">0xff0000ff</span><span class="p">]))</span>
+</pre>
+        </div>
+       </div>
+       <img alt="../../_images/plot_mesh2.png" src="../../_images/plot_mesh2.png"/>
+       <h3 id="visualise-mesh-with-texture">
+        visualise mesh with texture
+        <a class="headerlink" href="#visualise-mesh-with-texture" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <p>
+        to plot mesh with texture, one can use the following command:
+       </p>
+       <div class="highlight-python notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="n">Trescope</span><span class="p">()</span><span class="o">.</span><span class="n">selectOutput</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span><span class="o">.</span><span class="n">plotMesh3D</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">withConfig</span><span class="p">(</span><span class="n">Mesh3DConfig</span><span class="p">()</span><span class="o">.</span><span class="n">indices</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+    <span class="o">.</span><span class="n">texture</span><span class="p">(</span><span class="s1">'http://personal.psu.edu/xqz5228/jpg.jpg'</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">textureCoordinate</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">))</span>
+</pre>
+        </div>
+       </div>
+       <img alt="../../_images/plot_mesh3.png" src="../../_images/plot_mesh3.png"/>
+       <h3 id="visualise-mesh-with-wireframe">
+        visualise mesh with wireframe
+        <a class="headerlink" href="#visualise-mesh-with-wireframe" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <p>
+        to plot mesh with a skeletal three-dimensional model in which only lines and vertices are
+represented, one can use the following command:
+       </p>
+       <div class="highlight-python notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="n">Trescope</span><span class="p">()</span><span class="o">.</span><span class="n">selectOutput</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">plotWireframe3D</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="p">)</span><span class="o">.</span><span class="n">withConfig</span><span class="p">(</span><span class="n">Wireframe3DConfig</span><span class="p">()</span><span class="o">.</span><span class="n">indices</span><span class="p">(</span>
+    <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+    <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span><span class="o">.</span><span class="n">color</span><span class="p">(</span><span class="mh">0xff00ff00</span><span class="p">)</span><span class="o">.</span><span class="n">width</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre>
+        </div>
+       </div>
+       <img alt="../../_images/plot_mesh4.png" src="../../_images/plot_mesh4.png"/>
+       <h2 id="d-front-plot">
+        3d front plot
+        <a class="headerlink" href="#d-front-plot" title="Permalink to this headline">
+         ¶
+        </a>
+       </h2>
+       <p>
+        trescope support visualization of various 3D data types, such as mesh, voxel, point cloud and so on,
+it is worth mentioning that we also support 3D-FRONT
+        <sup>
+         [1]
+        </sup>
+        dataset visualization(which is a fantastic scene dataset from Alibaba)
+       </p>
+       <h3 id="different-rendertype">
+        different renderType
+        <a class="headerlink" href="#different-rendertype" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <p>
+        to plot with
+        <strong>
+         color
+        </strong>
+        renderType:
+       </p>
+       <div class="highlight-python notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="n">Trescope</span><span class="p">()</span><span class="o">.</span><span class="n">selectOutput</span><span class="p">(</span><span class="mi">9</span><span class="p">)</span><span class="o">.</span><span class="n">plotFRONT3D</span><span class="p">(</span><span class="s1">'../data/res/3D-FRONT-samples/scenes/310e0715-f95b-40ca-8edc-744560f57379.json'</span><span class="p">)</span><span class="o">.</span><span class="n">withConfig</span><span class="p">(</span>
+<span class="n">FRONT3DConfig</span><span class="p">()</span>
+    <span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">'top'</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">renderType</span><span class="p">(</span><span class="s1">'color'</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">shapeLocalSource</span><span class="p">(</span><span class="s1">'../data/res/3D-FRONT-samples/3D-FUTURE-model'</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">hiddenMeshes</span><span class="p">([</span><span class="s1">'Ceiling'</span><span class="p">,</span> <span class="s1">'SlabTop'</span><span class="p">,</span> <span class="s1">'ExtrusionCustomizedCeilingModel'</span><span class="p">]))</span>
+</pre>
+        </div>
+       </div>
+       <p>
+        one can change
+        <strong>
+         renderType
+        </strong>
+        like: color, depth, normal, mesh_semantic
+       </p>
+       <img alt="../../_images/plot_3dfront1.png" src="../../_images/plot_3dfront1.png"/>
+       <h3 id="different-view-type">
+        different view Type
+        <a class="headerlink" href="#different-view-type" title="Permalink to this headline">
+         ¶
+        </a>
+       </h3>
+       <div class="highlight-python notranslate">
+        <div class="highlight">
+         <pre><span></span><span class="n">Trescope</span><span class="p">()</span><span class="o">.</span><span class="n">selectOutput</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span><span class="o">.</span><span class="n">plotFRONT3D</span><span class="p">(</span><span class="s1">'../data/res/3D-FRONT-samples/scenes/310e0715-f95b-40ca-8edc-744560f57379.json'</span><span class="p">)</span><span class="o">.</span><span class="n">withConfig</span><span class="p">(</span>
+    <span class="n">FRONT3DConfig</span><span class="p">()</span>
+        <span class="o">.</span><span class="n">view</span><span class="p">(</span><span class="s1">'front'</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">renderType</span><span class="p">(</span><span class="s1">'color'</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">shapeLocalSource</span><span class="p">(</span><span class="s1">'../data/res/3D-FRONT-samples/3D-FUTURE-model'</span><span class="p">)</span>
+        <span class="o">.</span><span class="n">hiddenMeshes</span><span class="p">([</span><span class="s1">'Ceiling'</span><span class="p">,</span> <span class="s1">'SlabTop'</span><span class="p">,</span> <span class="s1">'ExtrusionCustomizedCeilingModel'</span><span class="p">]))</span>
+</pre>
+        </div>
+       </div>
+       <img alt="../../_images/plot_3dfront2.png" src="../../_images/plot_3dfront2.png"/>
+       <div class="highlight-bash notranslate">
+        <div class="highlight">
+         <pre><span></span>@article<span class="o">{</span>fu20203dfront,
+    <span class="nv">title</span><span class="o">={</span>3D-FRONT: 3D Furnished Rooms with layOuts and semaNTics<span class="o">}</span>,
+    <span class="nv">author</span><span class="o">={</span>Fu, Huan and Cai, Bowen and Gao, Lin and Zhang, Lingxiao and Li, Cao and Zeng, Qixun and Sun, Chengyue
+            and Fei, Yiyun and Zheng, Yu and Li, Ying and Liu, Yi and Liu, Peng and Ma, Lin and Weng, Le and Hu, Xiaohang
+            and Ma, Xin and Qian, Qian and Jia, Rongfei and Zhao, Binqiang and Zhang, Hao<span class="o">}</span>,
+    <span class="nv">journal</span><span class="o">={</span>arXiv preprint arXiv:2011.09127<span class="o">}</span>,
+    <span class="nv">year</span><span class="o">={</span><span class="m">2020</span><span class="o">}</span>
+<span class="o">}</span>
+</pre>
+        </div>
+       </div>
+      </article>
+     </div>
+    </div>
+   </main>
+  </div>
+  <footer class="md-footer">
+   <div class="md-footer-nav">
+    <nav class="md-footer-nav__inner md-grid">
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--prev" href="../installation/index.html" rel="prev" title="Installation">
+      <div class="md-flex__cell md-flex__cell--shrink">
+       <i class="md-icon md-icon--arrow-back md-footer-nav__button">
+       </i>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+       <span class="md-flex__ellipsis">
+        <span class="md-footer-nav__direction">
+         Previous
+        </span>
+        Installation
+       </span>
+      </div>
+     </a>
+     <a class="md-flex md-footer-nav__link md-footer-nav__link--next" href="../labeling/index.html" rel="next" title="Labeling">
+      <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+       <span class="md-flex__ellipsis">
+        <span class="md-footer-nav__direction">
+         Next
+        </span>
+        Labeling
+       </span>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+       <i class="md-icon md-icon--arrow-forward md-footer-nav__button">
+       </i>
+      </div>
+     </a>
+    </nav>
+   </div>
+   <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+     <div class="md-footer-copyright">
+      <div class="md-footer-copyright__highlight">
+       © Copyright 2021, YunzhongTianjing, jeannotes.
+      </div>
+      Created using
+      <a href="http://www.sphinx-doc.org/">
+       Sphinx
+      </a>
+      3.4.2.
+             and
+      <a href="https://github.com/bashtage/sphinx-material/">
+       Material for
+              Sphinx
+      </a>
+     </div>
+    </div>
+   </div>
+  </footer>
+  <script src="../../_static/javascripts/application.js">
+  </script>
+  <script>
+   app.initialize({version: "1.0.4", url: {base: ".."}})
+  </script>
+ </body>
+</html>

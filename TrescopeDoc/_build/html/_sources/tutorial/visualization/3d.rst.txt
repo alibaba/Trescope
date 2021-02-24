@@ -1,0 +1,76 @@
+3d plot
+==============
+
+visualise 3d points
+~~~~~~~~~~~~~~~~~~~~~~
+
+to plot the next four points:
+
+.. code-block:: python
+
+    0,0,0
+    1,0,0
+    1,1,0
+    0,1,0
+
+use the following command to plot them
+
+.. code-block:: python
+
+    Trescope().selectOutput(0).plotScatter3D(
+            [0, 1, 1, 0],
+            [0, 0, 1, 1],
+            [0, 0, 0, 0]
+        ).withConfig(Scatter3DConfig().color(0xffff0000).mode([ScatterMode.MARKERS]))
+
+
+.. image:: ../../../readme/tutorial_doc/plot_point1.png
+
+**plotScatter3D** read points using slightly different format, remember to split x,y,z into different lists like this.
+
+**withConfig** set the attributes to be visualised in  browser, check api inside, one may set color, size etc
+
+different point colors
+~~~~~~~~~~~~~~~~~~~~~~~
+
+to plot points with different colors, one can use the following command
+
+.. code-block:: python
+
+    label = [0,0,1,1]
+    color = [toolbox.color_from_label(_label) for _label in label]
+    Trescope().selectOutput(1).plotScatter3D(
+        [0, 1, 1, 0],
+        [0, 0, 1, 1],
+        [0, 0, 0, 0]
+    ).withConfig(Scatter3DConfig().color(color).mode([ScatterMode.MARKERS]))
+
+.. image:: ../../../readme/tutorial_doc/plot_point2.png
+
+visualise vectors
+~~~~~~~~~~~~~~~~~~~~~~
+
+to plot the next three vectors:
+
+.. code-block:: python
+
+    start point  ->  end point 
+      (0,0,0)         (0,1,0)
+      (1,0,0)         (1,1,1)
+      (2,0,0)         (0,-1,0)
+
+use the following command to plot them
+
+.. code-block:: python
+
+    Trescope().selectOutput(3).plotLollipop3D(
+        [0, 1, 0],
+        [1, 1, -1],
+        [0, 1, 0]
+    ).withConfig(Lollipop3DConfig().locations([0, 1, 2],
+                                              [0, 0, 0],
+                                              [0, 0, 0]).name('plotLollipop3D').color(0xffff0000))
+
+.. image:: ../../../readme/tutorial_doc/plot_vector.png
+
+one can see that the cross is the starting point, the point is the end point

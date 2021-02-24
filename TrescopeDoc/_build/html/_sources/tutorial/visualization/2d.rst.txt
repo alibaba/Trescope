@@ -1,0 +1,138 @@
+2d plot
+==============
+
+visualise 2d points
+~~~~~~~~~~~~~~~~~~~~~~
+
+to plot the next three points:
+
+.. code-block:: python
+
+    1,1
+    2,1
+    3,1
+
+use the following command to plot them
+
+.. code-block:: python
+
+    Trescope().selectOutput(1).plotScatter2D(
+        [1, 2, 3],
+        [1, 1, 1],
+    ).withConfig(Scatter2DConfig().name('plotScatter2D').color(0xffff0000).size(1))
+
+
+.. image:: ../../../readme/tutorial_doc/plot_2d1.png
+
+**plotScatter2D** read points using slightly different format, remember to split x,y into different lists like this.
+
+**withConfig** set the attributes to be visualised in  browser, check api inside, one may set color, size etc
+
+set up breakpoint
+~~~~~~~~~~~~~~~~~~~~~~
+
+sometimes to debug code, when visualise one image or points, one can set breakpoint in trescope, no need to 
+set up breakpoint in code:
+
+.. code-block:: python
+
+    Trescope().breakPoint('check')
+
+.. image:: ../../../readme/tutorial_doc/plot_2d2.png
+
+now, the code stops at here, when click **CONTINUE** button, the code steps forward.
+
+visualise heatmap
+~~~~~~~~~~~~~~~~~~~~~~
+
+to plot a simple heatmap 
+
+.. code-block:: python
+
+    import numpy as np
+    Trescope().selectOutput(7).plotHeatMap(np.array(range(10)).reshape((2, 5))).withConfig(HeatMapConfig().useGL(False))
+
+.. image:: ../../../readme/tutorial_doc/plot_heatmap.png
+
+visualise surface
+~~~~~~~~~~~~~~~~~~~~~~
+
+to plot a random surface 
+
+.. code-block:: python
+
+    import numpy as np
+        Trescope().selectOutput(8).plotSurface3D(np.random.rand(100).reshape((10, 10))).withConfig(Surface3DConfig())
+
+.. image:: ../../../readme/tutorial_doc/plot_surface.png
+
+visualise pie figure
+~~~~~~~~~~~~~~~~~~~~~~
+
+to plot a simple pie figure
+
+.. code-block:: python
+
+    Trescope().selectOutput(0).plotPie(['dog', 'cat'], [45, 89]).withConfig(PieConfig())
+    
+.. image:: ../../../readme/tutorial_doc/plot_pie.png
+
+
+graph plot
+===========
+
+visualise graph
+~~~~~~~~~~~~~~~~~~~~~~
+
+for the next graph data composed of vertices and edges:
+
+.. code-block:: python
+
+    vertex=np.array([[255, 0, 0, 0xff0000], 
+                    [0, 255, 0, 0x00ff00], 
+                    [0, 0, 255, 0x0000ff], 
+                    [255, 255, 0, 0xffff00]]).T,
+    link=[
+        [0, 0, 2, 3, 2],
+        [1, 1, 1, 3, 3]
+    ],
+    edge=np.array([[100, 90], 
+                  [900, 802], 
+                  [987, 234], 
+                  [777, 990], 
+                  [123, 345]]).T
+
+use this command to plot:
+
+.. code-block:: python
+    
+    (Trescope()
+        .selectOutput(0)
+        .plotGraph(
+        vertex=np.array([[255, 0, 0, 0xff0000], [0, 255, 0, 0x00ff00], [0, 0, 255, 0x0000ff], [255, 255, 0, 0xffff00]]).T,
+        link=[
+            [0, 0, 2, 3, 2],
+            [1, 1, 1, 3, 3]
+        ],
+        edge=np.array([[100, 90], [900, 802], [987, 234], [777, 990], [123, 345]]).T
+    ).withConfig(
+        GraphConfig()
+            .vertexDescription(['红', '绿', '蓝', '黄'])
+            .vertexSize(3)
+            .vertexColor([0xff0000, 0x00ff00, 0x0000ff, 0xffff00])
+            .vertexOpacity(.5)
+            .edgeDescription('edge')
+            .edgeColor('black')
+            .edgeWidth([1.5, 1, 1, 1, 2])
+            .edgeOpacity(.3)
+    ))
+
+.. image:: ../../../readme/tutorial_doc/plot_graph1.png
+ 
+visualise edge
+~~~~~~~~~~~~~~~~~~~~~~
+
+if one put mouse pointer on the graph edge, the edge direction appears, with edge starting point,
+end point, as well as edge attributes
+
+.. image:: ../../../readme/tutorial_doc/plot_graph2.png
