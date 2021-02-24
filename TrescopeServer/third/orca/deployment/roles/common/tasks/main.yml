@@ -1,2 +1,0 @@
-- name: Get credentials for cluster
-  local_action: command gcloud container clusters get-credentials {{ cluster }} --zone {{ zone }}

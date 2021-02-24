@@ -10,6 +10,7 @@ import {voidOperate} from "../Utils/Utils";
 import CloudOffTwoToneIcon from '@material-ui/icons/CloudOffTwoTone';
 import CloudQueueTwoToneIcon from '@material-ui/icons/CloudQueueTwoTone';
 import Divider from '@material-ui/core/Divider';
+import Tooltip from '@material-ui/core/Tooltip';
 
 class ControlBar extends React.Component {
     constructor(props) {
@@ -24,7 +25,8 @@ class ControlBar extends React.Component {
         };
 
         this.state = {
-            serverConnected: undefined,
+            heteroInfo: {pid: -1},
+            displayConnected: undefined,
             continueBreakPoint: voidOperate,
             disableContinue: true,
             currentIdentifier: "",
@@ -33,27 +35,21 @@ class ControlBar extends React.Component {
         this.webSocketClient = webSocketClient;
         this.webSocketClient.addEventListener((eventName, _) => {
             if ('close' === eventName || 'error' === eventName) {
-                this.setState({serverConnected: false});
+                this.setState({displayConnected: false});
                 return;
             }
             if ('open' === eventName) {
-                this.setState({serverConnected: true});
+                this.setState({displayConnected: true});
                 return;
             }
         });
 
         this.webSocketClient.setFunctionListener(
-            "breakPoint",
-            ({identifier}, finish) => {
+            "breakPoint", ({identifier}, finish) => {
                 this.setState({
-                    disableContinue: false,
-                    currentIdentifier: identifier,
+                    disableContinue: false, currentIdentifier: identifier,
                     continueBreakPoint: () => {
-                        this.setState({
-                            continueBreakPoint: voidOperate,
-                            disableContinue: true,
-                            currentIdentifier: "",
-                        });
+                        this.setState({continueBreakPoint: voidOperate, disableContinue: true, currentIdentifier: "",});
 
                         const mapObj = Array.from(props.inputDatas).reduce((obj, [key, value]) => {
                             obj[key] = value;
@@ -62,8 +58,13 @@ class ControlBar extends React.Component {
                         finish({inputDatas: mapObj});
                     },
                 });
-            }
-        );
+            });
+
+        this.webSocketClient.setFunctionListener(
+            "notifyHeteroStatus", ({heteroInfo}, finish) => {
+                this.setState({heteroInfo});
+                finish();
+            });
     }
 
     componentWillMount() {
@@ -75,9 +76,9 @@ class ControlBar extends React.Component {
     }
 
     render() {
-        const {classes} = this.props;
-        let serverConnected = undefined === this.state.serverConnected ? this.webSocketClient.alive() : this.state.serverConnected;
-
+        const {classes, width} = this.props;
+        const displayConnected = undefined === this.state.displayConnected ? this.webSocketClient.alive() : this.state.displayConnected;
+        const heteroConnected = -1 !== this.state.heteroInfo.pid;
         return (
             <Paper className={classes.root}>
                 <Grid
@@ -88,8 +89,24 @@ class ControlBar extends React.Component {
                     wrap="nowrap"
                 >
                     <Grid item>
-                        {serverConnected ? <CloudQueueTwoToneIcon color="primary"/> :
-                            <CloudOffTwoToneIcon color="secondary"/>}
+                        <div className={classes.centerContainer}>
+                            <div className={classes.centerChild}>
+                                {displayConnected ? <CloudQueueTwoToneIcon color="primary"/> :
+                                    <CloudOffTwoToneIcon color="secondary"/>}
+                            </div>
+                            <Typography variant="caption" className={classes.centerChild}>Display</Typography>
+                        </div>
+
+                        {displayConnected ? <Tooltip
+                            title={heteroConnected ? `heteroPid: ${ this.state.heteroInfo.pid}` : 'unconnected'}>
+                            <div className={classes.centerContainer}>
+                                <div className={classes.centerChild}>
+                                    {heteroConnected ? <CloudQueueTwoToneIcon color="primary"/> :
+                                        <CloudOffTwoToneIcon color="secondary"/>}
+                                </div>
+                                <Typography variant="caption" className={classes.centerChild}>Hetero</Typography>
+                            </div>
+                        </Tooltip> : null}
                     </Grid>
                     <Divider orientation="vertical" flexItem className={classes.divider}/>
                     <Grid item>
@@ -110,8 +127,8 @@ class ControlBar extends React.Component {
                             disabled={this.state.disableContinue}
                             onClick={this.state.continueBreakPoint}
                         >
-                            continue
-                            <Icon className={classes.continueIcon}>
+                            {width > 400 ? 'continue' : null}
+                            <Icon className={width > 400 ? classes.continueIcon : null}>
                                 play_arrow
                             </Icon>
                         </Button>
@@ -123,6 +140,17 @@ class ControlBar extends React.Component {
 }
 
 export default withStyles((theme) => ({
+    centerContainer: {
+        position: 'relative',
+        height: '36px',
+        width: '50px'
+    },
+    centerChild: {
+        position: 'absolute',
+        top: '50%',
+        left: '50%',
+        transform: 'translate(-50%, -50%)'
+    },
     root: {
         paddingRight: theme.spacing(1),
         paddingLeft: theme.spacing(1),

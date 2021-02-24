@@ -13,5 +13,13 @@ function magenta(text) {
     return `${_magenta}${text}${_reset}`
 }
 
-module.exports = {magenta}
+function blue(text) {
+    return `${_blue}${text}${_reset}`
+}
+
+function red(text) {
+    return `${_red}${text}${_reset}`
+}
+
+module.exports = {magenta, red, blue};
 

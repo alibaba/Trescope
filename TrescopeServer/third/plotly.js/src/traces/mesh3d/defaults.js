@@ -1,5 +1,5 @@
 /**
-* Copyright 2012-2020, Plotly, Inc.
+* Copyright 2012-2021, Plotly, Inc.
 * All rights reserved.
 *
 * This source code is licensed under the MIT license found in the
@@ -92,6 +92,13 @@ module.exports = function supplyDefaults(traceIn, traceOut, defaultColor, layout
     coerce('text');
     coerce('hovertext');
     coerce('hovertemplate');
+
+    if('u' in traceIn && 'v' in traceIn && 'texture' in traceIn) {
+        readComponents(['u', 'v']);
+        coerce('texture');
+        coerce('textureFlip');
+        coerce('textureWrap');
+    }
 
     // disable 1D transforms
     // x/y/z should match lengths, and i/j/k should match as well, but

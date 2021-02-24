@@ -1,8 +1,0 @@
-- hosts: localhost
-  gather_facts: False
-  vars:
-    cluster: stage
-    zone: us-central1-a
-  roles:
-    - common
-    - rollback

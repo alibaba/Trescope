@@ -15,7 +15,7 @@ class CompleteInfo(object):
     def commit(self):
         from trescope.core.Trescope import Trescope
         trescope: Trescope = self.getHost().getHost().getHost()
-        trescope.internalCommit(
+        trescope._internalCommit(
             **self.toDict(),  # config
             **self.getHost().toDict(),  # content
             **self.getHost().getHost().toDict(),  # output

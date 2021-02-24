@@ -5,6 +5,8 @@ from .EnumControl import EnumControl
 from .RangeControl import RangeControl
 from .TextControl import TextControl
 from .TriggerControl import TriggerControl
+from .VisualDataPickControl import VisualDataPickControl, BoundingBox2D
+from .Label import Label
 
 __all__ = [
     'ControllerNode',
@@ -14,4 +16,7 @@ __all__ = [
     'RangeControl',
     'TextControl',
     'TriggerControl',
+    'VisualDataPickControl',
+    'Label',
+    'BoundingBox2D'
 ]

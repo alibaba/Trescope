@@ -18,20 +18,38 @@ class FRONT3DItem extends React.Component {
         this.canvas = React.createRef();
     }
 
-    shouldComponentUpdate(nextProps) {
+    shouldComponentUpdate(nextProps, nextState, snap) {
         const {version} = nextProps.itemRenderer;
         const {size} = nextProps;
 
-        const versionComparison = this.version === version;
-        const sizeComparison = this.size.width === size.width && this.size.height === size.height;
+        const sameVersion = (this.version === version);
+        if (!sameVersion) {
+            this.size = size;
+            this.version = version;
+            return true;
+        }
+
+
+        const sameSize = (this.size.width === size.width && this.size.height === size.height);
+        if (!sameSize) {
+            this.size = size;
+            this.version = version;
+            this.renderer.setSize(size.width, size.height);
+            if (this.camera) this.camera.aspect = this.aspect();
+            this.canvas.current.width = size.width;
+            this.canvas.current.height = size.height;
+            this.canvas.current.style.width = size.width;
+            this.canvas.current.style.height = size.height;
+            return false;
+        }
 
         this.size = size;
         this.version = version;
-        return !versionComparison || !sizeComparison;
+        return false;
     }
 
-    componentDidUpdate(props) {
-        const {size} = props;
+    componentDidUpdate(preProps, preState, snap) {
+        const {size} = this.props;
         this.renderer.setSize(size.width, size.height);
         if (this.camera) this.camera.aspect = this.aspect();
     }
@@ -67,7 +85,8 @@ class FRONT3DItem extends React.Component {
     }
 
     render() {
-        return <canvas ref={this.canvas} style={{width: '100%', height: '100%'}}/>;
+        const {width, height} = this.props.size;
+        return <canvas ref={this.canvas} width={width} height={height} style={{width, height}}/>;
     }
 }
 

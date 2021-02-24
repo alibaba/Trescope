@@ -4,7 +4,10 @@ const utils = require("../utils");
 const plotlyLayoutTemplate = {
     showlegend: true, legend: {orientation: "h"},
     yaxis: {scaleanchor: 'x', scaleratio: 1},//keep x , y equal ratio when 2d
-    margin: {l: 50, r: 50, t: 80, b: 50},
+    margin: {l: 60, r: 60, t: 80, b: 60},
+    hoverlabel: {
+        namelength: -1
+    },
     scene: {
         aspectmode: "data",
         camera: {up: {x: 0, y: 1, z: 0}, projection: {type: 'perspective'}},

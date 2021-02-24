@@ -12,18 +12,15 @@ class WebSocketClient {
         };
         this.coreClient.onmessage = message => {
             const command = JSON.parse(message.data);
-            console.log("message:", command.function);
-            const {token} = command;
-            const finish = result => this.coreClient.send(JSON.stringify({token, ...result}));
+            console.log(`event[message] comes, call function[${command.function}]`);
+            const {token, src} = command;
+            const finish = result => this.coreClient.send(JSON.stringify({token, src, ...result}));
 
             this.eventListeners.forEach(listener => listener("message", message));
 
             const theFunctionListener = this.functionListeners[command.function];
-            if (theFunctionListener) {
-                theFunctionListener(command, finish);
-            } else { //ignore the command if it hasn't listerner.
-                finish();
-            }
+            if (theFunctionListener) theFunctionListener(command, finish);
+            else finish();//Ignore the command if no listener registered.
         };
         this.coreClient.onerror = () => {
             this._alive = false;
@@ -34,7 +31,7 @@ class WebSocketClient {
             this.eventListeners.forEach(listener => listener("close"));
         };
 
-        this.addEventListener((event, params) => console.log(`event[${event}] comes`));
+        this.addEventListener((event, params) => 'message' !== event && console.log(`event[${event}] comes`));
     }
 
     alive() {

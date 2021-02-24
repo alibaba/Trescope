@@ -8,6 +8,7 @@ import Box from "@material-ui/core/Box";
 import {withStyles} from "@material-ui/styles";
 import WebSocketClient from "./Utils/WebSocketClient";
 import MainContainer from "./Container/MainContainer";
+import ReactResizeDetector from "react-resize-detector";
 
 import ControlBar from "./Container/ControlBar";
 
@@ -21,8 +22,7 @@ function Router(props) {
             hidden={value !== index}
             id={`simple-tabpanel-${index}`}
             aria-labelledby={`simple-tab-${index}`}
-            {...other}
-        >
+            {...other} >
             <Box marginTop={5}>{children}</Box>
         </Typography>
     );
@@ -53,7 +53,8 @@ class MainRouters extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {tabIndex: 0, appBarHeight: 0};
+        this.appBarRef = React.createRef();
+        this.state = {tabIndex: 0, appBarHeight: 0, width: 0};
         const debugBackendPort = new URL(window.location.href).searchParams.get("debug");
         const uri = debugBackendPort
             ? `ws://localhost:${debugBackendPort}`
@@ -67,42 +68,45 @@ class MainRouters extends React.Component {
     }
 
     componentDidMount() {
-        let {clientHeight} = this.refs.appBar;
+        let {clientHeight} = this.appBarRef.current;
         this.setState({appBarHeight: clientHeight});
     }
 
     render() {
         const {classes} = this.props;
         return (
-            <div className={classes.root}>
-                <AppBar ref="appBar">
+            <div className={classes.root} style={{width: this.state.width}}>
+                <AppBar ref={this.appBarRef}>
                     <Tabs
                         value={this.state.tabIndex}
                         onChange={this.onTabSelected}
-                        aria-label="tabs"
-                    >
-                        <Tab label="Plot" {...a11yProps(0)} />
+                        aria-label="tabs">
+                        <Tab label="Main" {...a11yProps(0)} />
                     </Tabs>
+
+                    <ReactResizeDetector
+                        handleWidth
+                        onResize={width => this.setState({width})}/>
                 </AppBar>
 
                 <Router value={this.state.tabIndex} index={0}>
                     <div
                         style={{
+                            width: '100%',
                             position: "sticky",
                             top: this.state.appBarHeight,
                             zIndex: 10001,
-                        }}
-                    >
+                        }}>
                         <ControlBar
+                            width={this.state.width}
                             inputDatas={this.inputDatas}
-                            webSocketClient={this.webSocketClient}
-                        />
+                            webSocketClient={this.webSocketClient}/>
                     </div>
 
                     <MainContainer
+                        width={this.state.width}
                         inputDatas={this.inputDatas}
-                        webSocketClient={this.webSocketClient}
-                    />
+                        webSocketClient={this.webSocketClient}/>
                 </Router>
             </div>
         );

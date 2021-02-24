@@ -52,7 +52,7 @@ class PerspectiveCamera(Camera):
     def __init__(self):
         super().__init__()
         self.__fovy: float = 65
-        self.__near: float = 1
+        self.__near: float = .1
         self.__far: float = 100
         self.__aspect: float = None
 
@@ -106,7 +106,7 @@ class AnchorCenter(AnchorType):
 
 
 class ScatterMode:
-    MARKER: str = 'markers'
+    MARKERS: str = 'markers'
     LINES: str = 'lines'
     TEXT: str = 'text'
 
@@ -115,7 +115,6 @@ from .ScatterSymbol import ScatterSymbol
 
 from .Config import Config
 from .ImageConfig import ImageConfig
-from .JuranJsonConfig import JuranJsonConfig
 from .Mesh3DConfig import Mesh3DConfig
 from .Scatter2DConfig import Scatter2DConfig
 from .Scatter3DConfig import Scatter3DConfig
@@ -128,6 +127,10 @@ from .HistogramConfig import HistogramConfig
 from .ViolinConfig import ViolinConfig
 from .Volume3DConfig import Volume3DConfig
 from .FRONT3DConfig import FRONT3DConfig
+from .Wireframe3DConfig import Wireframe3DConfig
+from .AxisHelper3DConfig import AxisHelper3DConfig
+from .LineSegmentConfig import LineSegmentConfig
+from .PieConfig import PieConfig
 
 __all__ = [
     'Camera',
@@ -155,5 +158,9 @@ __all__ = [
     'HistogramConfig',
     'ViolinConfig',
     'Volume3DConfig',
-    'FRONT3DConfig'
+    'FRONT3DConfig',
+    'Wireframe3DConfig',
+    'AxisHelper3DConfig',
+    'LineSegmentConfig',
+    'PieConfig',
 ]

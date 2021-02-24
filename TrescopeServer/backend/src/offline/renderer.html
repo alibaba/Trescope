@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+
+        #mainDiv {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+    </style>
+    <title>Trescope offline renderer</title>
+    <!--<meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-inline';"/>-->
+    <script type="text/javascript">
+        const {ipcRenderer, webFrame} = require("electron");
+        const Plotly = require("plotly.js/dist/plotly");
+        const THREE = require("three");
+        const sceneCreator = require("scene-json-renderer");
+        let mainDiv;
+        let _factor = 1;
+
+        function getMainDiv(width, height, factor) {
+            if (factor !== _factor) {
+                _factor = factor;
+                webFrame.setZoomFactor(1. / _factor);
+            }
+            width = `${width}px`;
+            height = `${height}px`;
+            if (!mainDiv) mainDiv = document.getElementById('mainDiv');
+            if (width !== mainDiv.style.width) mainDiv.style.width = width;
+            if (height !== mainDiv.style.height) mainDiv.style.height = height;
+            return mainDiv;
+        }
+
+        ipcRenderer.on('trescope.plotly.newPlot', (_, {outputId, data, layout, width, height, factor}) =>
+            Plotly
+                .newPlot(getMainDiv(width, height, factor), data, layout)
+                .then(() => Plotly.toImage(getMainDiv(width, height, factor), {}))
+                .then(() => ipcRenderer.invoke('capturePage', {outputId, width, height}))
+        );
+
+        async function createScene(div, data, layout, serverHost, callback) {
+            while (div.firstChild) div.removeChild(div.firstChild);
+            const canvas = document.createElement('canvas');
+            canvas.style.width = '100%';
+            canvas.style.height = '100%';
+            div.appendChild(canvas);
+
+            const trace = data[0];
+            const {houseLayoutFile, shapeLocalSource, shapeRemoteSource, view, unit, hiddenMeshes, renderType} = trace;
+            let width = div.style.width, height = div.style.height;
+            width = Number(width.substring(0, width.length - 2));
+            height = Number(height.substring(0, height.length - 2));
+
+            const {scene, camera, loadingPromises} = await sceneCreator.createScene(houseLayoutFile,
+                shapeLocalSource, shapeRemoteSource,
+                view, layout.scene.camera, width / height,
+                unit, hiddenMeshes, renderType,
+                serverHost);
+            await Promise.all(loadingPromises);
+
+
+            const renderer = new THREE.WebGLRenderer({canvas, antialias: true});
+            renderer.setSize(width, height);
+            requestAnimationFrame(() => {
+                renderer.render(scene, camera);
+                requestAnimationFrame(callback);
+            });
+        }
+
+        ipcRenderer.on('trescope.scene.createScene', (_, {outputId, data, layout, width, height, factor, serverHost}) =>
+            createScene(getMainDiv(width, height, factor), data, layout, serverHost,
+                () => ipcRenderer.invoke('capturePage', {outputId, width, height})));
+    </script>
+</head>
+<body>
+<div id="mainDiv">
+</div>
+</body>
+</html>

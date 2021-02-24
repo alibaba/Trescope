@@ -6,7 +6,7 @@
   "scripts": {
     "cp-front_archive": "rm -rf public && mkdir public && cp -r ../frontend/build/* public",
     "build-scene_loader": "npm --prefix ../universal/scene-json-renderer run tsc",
-    "pack": "npm run build-scene_loader && npm run cp-front_archive && ELECTRON_MIRROR=https://npm.taobao.org/mirrors/electron/ electron-packager . --overwrite --asar --electron-version=8.2.0",
+    "pack": "npm run build-scene_loader && npm run cp-front_archive && ELECTRON_MIRROR=https://npm.taobao.org/mirrors/electron/ electron-packager . --overwrite --asar --prune --electron-version=8.2.0 --ignore=node_modules/plotly.js/node_modules --ignore=node_modules/plotly.js/test --ignore=node_modules/plotly.js/dist/plotly-.* --ignore=node_modules/plotly.js/test --ignore=node_modules/plotly.js/topojson",
     "start": "node ./src/application.js"
   },
   "author": "yunhun.fyy@alibaba-inc.com",
@@ -16,23 +16,23 @@
   },
   "dependencies": {
     "bufferutil": "4.0.1",
+    "crypto": "1.0.1",
+    "glob": "7.1.6",
+    "is-url": "1.2.4",
     "mkdirp": "1.0.4",
     "moment": "2.24.0",
     "net": "1.0.2",
-    "orca": "file:../third/orca",
+    "node-fetch": "2.6.0",
+    "open": "7.0.3",
+    "gl-mesh3d": "file:../third/gl-mesh3d",
+    "plotly.js": "file:../third/plotly.js",
+    "pngjs": "5.0.0",
+    "portscanner": "2.2.0",
+    "scene-json-renderer": "file:../universal/scene-json-renderer",
+    "three": "0.120.1",
     "utf-8-validate": "5.0.2",
     "ws": "7.2.3",
-    "yargs": "16.0.3",
-    "open": "7.0.3",
-    "portscanner": "2.2.0",
-    "glob": "7.1.6",
-    "three": "0.120.1",
-    "gl": "4.5.3",
-    "pngjs": "5.0.0",
-    "node-fetch": "2.6.0",
-    "is-url": "1.2.4",
-    "scene-json-renderer": "file:../universal/scene-json-renderer",
-    "crypto": "1.0.1"
+    "yargs": "16.0.3"
   },
   "publishConfig": {
     "registry": "https://registry.npm.alibaba-inc.com"

@@ -1,5 +1,6 @@
 const terminalColor = require('./terminal-color');
 const miscs = require('./miscs');
+const svgParser = require('./svg-parser');
 const fs = require("fs");
 const path = require("path");
 
@@ -46,6 +47,7 @@ function ensureDirectory(directory) {
 }
 
 module.exports = {
+    svgParser,
     terminalColor, miscs,
     getFiles, ensureDirectory,
     intToRGBA: (colorOrColorArray) => {

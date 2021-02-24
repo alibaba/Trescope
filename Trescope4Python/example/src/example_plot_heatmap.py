@@ -1,7 +1,8 @@
-from trescope import Trescope, Layout
-from trescope.config import (Mesh3DConfig, HeatMapConfig, ColorScale)
-from trescope.toolbox import simpleDisplayOutputs
 import numpy as np
+
+from trescope import Trescope
+from trescope.config import (HeatMapConfig, ColorScale)
+from trescope.toolbox import simpleDisplayOutputs
 
 
 def plot_heat_map():

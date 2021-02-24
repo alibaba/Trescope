@@ -3,14 +3,14 @@ from typing import List
 
 from trescope.config import Config
 from trescope.core.CompleteInfo import CompleteInfo
-from trescope.core.Utils import generateRandomString, toListIfNumpyOrTensorArray
-
-
-def _wrapFilePath(filePath: str):
-    return filePath if 'http' == filePath[:4] else os.path.abspath(filePath)
+from trescope.core.Utils import generateRandomString, toListIfNumpyOrTensorArray, get_abs_path
 
 
 class Content(object):
+    """
+    Contains all information to plot data , basic data and config of data .
+    """
+
     def __init__(self, output, **kwargs):
         from trescope.core.Output import Output
         self.__host: Output = output
@@ -20,11 +20,12 @@ class Content(object):
         self.__z: List[float] = kwargs['z'] if 'z' in kwargs else None
         self.__value: List[float] = kwargs['value'] if 'value' in kwargs else None
         self.__intensity = kwargs['intensity'] if 'intensity' in kwargs else None
-        self.__filePath: str = _wrapFilePath(kwargs['filePath']) if 'filePath' in kwargs else \
+        self.__filePath: str = get_abs_path(kwargs['filePath']) if 'filePath' in kwargs else \
             (self.__generateFile(kwargs['fileContent']) if 'fileContent' in kwargs else None)
         self.__vertex: List = kwargs['vertex'] if 'vertex' in kwargs else None
         self.__link: List = kwargs['link'] if 'link' in kwargs else None
         self.__edge: List = kwargs['edge'] if 'edge' in kwargs else None
+        self.__label: List[str] = kwargs['label'] if 'label' in kwargs else None
 
     def __generateFile(self, fileContentString: str) -> str:
         filePath = os.path.join(self.getHost().getHost()._hostDirectory(), f'{generateRandomString(5)}.json')
@@ -46,6 +47,13 @@ class Content(object):
             'vertex': toListIfNumpyOrTensorArray(self.__vertex),
             'link': toListIfNumpyOrTensorArray(self.__link),
             'edge': toListIfNumpyOrTensorArray(self.__edge),
+            'label': toListIfNumpyOrTensorArray(self.__label)
         }
 
-    def withConfig(self, config: Config) -> None: CompleteInfo(self, config).commit()
+    def withConfig(self, config: Config) -> None:
+        """
+        Specify config and commit all data to plot .
+
+        :param config: config , see :py:mod:`trescope.config`
+        """
+        CompleteInfo(self, config).commit()

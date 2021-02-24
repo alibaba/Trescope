@@ -55,6 +55,7 @@ class DisplayEndpoint {
                 return;
             }
             const session = new Session(socket);
+            session.host = request.headers.host;
             this._displaySession = session;
 
             this._safeGetListeners(event.CONNECT).forEach(callback => callback(({session, ip})));

@@ -1,5 +1,5 @@
 /**
-* Copyright 2012-2020, Plotly, Inc.
+* Copyright 2012-2021, Plotly, Inc.
 * All rights reserved.
 *
 * This source code is licensed under the MIT license found in the
@@ -161,7 +161,54 @@ proto.update = function(data) {
         useFacetNormals: data.flatshading
     };
 
-    if(data.intensity) {
+    if('undefined' !== typeof Image && data.texture && data.u && data.v) {
+        const zip2 = (x, y, len) => {
+            len = len || x.length;
+            const result = new Array(len);
+            for(let i = 0; i < len; i++) result[i] = [x[i], y[i]];
+            return result;
+        };
+
+        const image = new Image();
+        image.crossOrigin = 'anonymous';
+        image.onload = () => {
+            const canvas = document.createElement('canvas');
+            const context = canvas.getContext('2d');
+            const drawScaleImage = (width, height, flip) => {
+                canvas.width = width;
+                canvas.height = height;
+                const hRatio = canvas.width / image.width;
+                const vRatio = canvas.height / image.height;
+                const ratio = Math.min(hRatio, vRatio);
+                const centerShift_x = (canvas.width - image.width * ratio) / 2;
+                const centerShift_y = (canvas.height - image.height * ratio) / 2;
+                if(flip) {
+                    context.translate(0, canvas.height);
+                    context.scale(1, -1);
+                }
+                context.drawImage(image, 0, 0, image.width, image.height, centerShift_x, centerShift_y, image.width * ratio, image.height * ratio);
+            };
+            data.textureWrap = data.textureWrap ? data.textureWrap : 'CLAMP_TO_EDGE';
+            let wrap = 'string' === typeof data.textureWrap ? [data.textureWrap, data.textureWrap] : data.textureWrap;
+
+            if(wrap.includes('REPEAT') && (Math.log2(image.width) % 1 !== 0 || Math.log2(image.height) % 1 !== 0)) {
+                drawScaleImage(512, 512, data.textureFlip);
+            } else {
+                drawScaleImage(image.width, image.height, data.textureFlip);
+            }
+
+            const gl = scene.glplot.gl;
+            wrap = wrap.map(e => ({
+                CLAMP_TO_EDGE: gl.CLAMP_TO_EDGE,
+                MIRRORED_REPEAT: gl.MIRRORED_REPEAT,
+                REPEAT: gl.REPEAT
+            }[e]));
+            config.texture = {content: canvas, wrap};
+            config.vertexUVs = zip2(data.u, data.v);
+            this.mesh.update(config);
+        };
+        image.src = data.texture;
+    } else if(data.intensity) {
         var cOpts = extractOpts(data);
         this.color = '#fff';
         var mode = data.intensitymode;

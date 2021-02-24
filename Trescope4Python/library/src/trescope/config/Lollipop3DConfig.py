@@ -5,6 +5,8 @@ from trescope.core.Utils import toListIfNumpyOrTensorArray
 
 
 class Lollipop3DConfig(Config):
+    """Config for :py:meth:`trescope.Output.plotLollipop3D`"""
+
     def __init__(self):
         super().__init__()
         self.__headSize: float = 10
@@ -16,22 +18,54 @@ class Lollipop3DConfig(Config):
         self.__z: List[float] = []
 
     def headSize(self, size: float):
+        """
+        Specify head size .
+
+        :param size: size , default 10
+        :return: self , for chain call
+        """
         self.__headSize = size
         return self
 
     def tailSize(self, size: float):
+        """
+        Specify tail size .
+
+        :param size: size , default 20
+        :return: self , for chain call
+        """
         self.__tailSize = size
         return self
 
     def lineWidth(self, width: float):
+        """
+        Specify line width .
+
+        :param width: width , default 1
+        :return: self , for chain call
+        """
         self.__lineWidth = width
         return self
 
     def locations(self, x: List[float], y: List[float], z: List[float]):
+        """
+        Specify locations .
+
+        :param x: x
+        :param y: y
+        :param z: z
+        :return: self , for chain call
+        """
         self.__x, self.__y, self.__z = x, y, z
         return self
 
     def color(self, color: int):
+        """
+        Specify color .
+
+        :param color: color , default 0xff000000 (means black with no transparency)
+        :return: self , for chain call
+        """
         self.__color = color
         return self
 

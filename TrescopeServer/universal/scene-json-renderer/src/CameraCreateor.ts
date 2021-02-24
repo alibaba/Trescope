@@ -1,5 +1,5 @@
 import {Box3} from "three/src/math/Box3";
-import {OrthographicCamera, PerspectiveCamera, Vector3} from "three";
+import {OrthographicCamera, PerspectiveCamera, Vector3, Matrix4} from "three";
 
 const viewType = {
     left: 'left',
@@ -183,17 +183,22 @@ export default function createCamera(view: string, cameraInfo: any, bbox: Box3, 
     if (cameraInfo.projection.type === 'orthographic') {
         let {position, lookAt, left, right, top, bottom, up} = getOrthographicCameraInfo(view, bbox.max, bbox.min, aspect);
 
-        let near = undefined !== cameraInfo.near ? cameraInfo.near : 1;
-        let far = undefined !== cameraInfo.far ? cameraInfo.far : 1000;
+        let near = undefined !== cameraInfo.near ? cameraInfo.near : .1;
+        let far = undefined !== cameraInfo.far ? cameraInfo.far : 100;
 
         position = view ? position : cameraInfo.eye;
-        up = view ? up : cameraInfo.up;
+        const up_ = view ? {x: 0, y: 1, z: 0} : cameraInfo.up;
         lookAt = view ? lookAt : cameraInfo.center;
 
         const camera = new OrthographicCamera(left, right, top, bottom, near, far);
         camera.position.set(position.x, position.y, position.z);
-        camera.up.set(up.x, up.y, up.z);
-        camera.lookAt(lookAt.x, lookAt.y, lookAt.z);
+        camera.up.set(up_.x, up_.y, up_.z);
+        // camera.lookAt(lookAt.x, lookAt.y, lookAt.z);
+        if (view === viewType.bottom || view === viewType.top) lookAt.z -= .00001;
+        camera.setRotationFromMatrix(new Matrix4().lookAt(
+            new Vector3(position.x, position.y, position.z),
+            new Vector3(lookAt.x, lookAt.y, lookAt.z),
+            new Vector3()));
         camera.updateMatrix();
         return {camera, cameraTarget: new Vector3(lookAt.x, lookAt.y, lookAt.z)};
     } else {
@@ -204,14 +209,15 @@ export default function createCamera(view: string, cameraInfo: any, bbox: Box3, 
         near = view ? near : cameraInfo.near;
         far = view ? far : cameraInfo.far;
         const camera = new PerspectiveCamera(cameraInfo.fovy, aspect, near, far);
-        let up = (view === viewType.top || view === viewType.bottom) ? {x: 0, y: 0, z: -1} : {x: 0, y: 1, z: 0};
 
         location = view ? location : cameraInfo.eye;
-        up = view ? up : cameraInfo.up;
+        const up = view ? {x: 0, y: 1, z: 0} : cameraInfo.up;
         center = view ? center : cameraInfo.center;
 
         camera.up.set(up.x, up.y, up.z);
         camera.position.set(location.x, location.y, location.z);
+
+        if (view === viewType.bottom || view === viewType.top) center.z -= .00001;
         camera.lookAt(center.x, center.y, center.z);
         camera.updateMatrix();
         return {camera, cameraTarget: new Vector3(center.x, center.y, center.z)};

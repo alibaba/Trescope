@@ -6,11 +6,13 @@ function plotFRONT3D({
                              shapeRemoteSourceTexture,
                              view,
                              unit,
-                             perspective,
                              name,
                              outputId,
                              hiddenMeshes,
-                             renderType
+                             renderType,
+                             renderer,
+                             sampleCount,
+                             baseLightStrength
                          },
                          context: {bundle},
                          sendToOutputAndWaitForResult,
@@ -23,8 +25,8 @@ function plotFRONT3D({
         type: 'front3d',
         houseLayoutFile: filePath,
         shapeLocalSource, shapeRemoteSource,
-        view, unit, perspective, hiddenMeshes,
-        renderType
+        view, unit, hiddenMeshes,
+        renderType, renderer, sampleCount, baseLightStrength
     };
     sendToOutputAndWaitForResult({function: 'plotFRONT3D', trace, outputId});
 }

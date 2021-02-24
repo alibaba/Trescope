@@ -1,4 +1,4 @@
-#!/usr/local/bin/python3
+#!/usr/local/opt/python@3.9/bin/python3.9
 import os
 import subprocess
 import sys
@@ -12,5 +12,11 @@ elif 'darwin' == sys.platform.lower():
 else:
     raise Exception(f'Unsupported platform: {sys.platform}')
 
-trescopeExe = f'{trescopeExe} {" ".join(sys.argv[1:])}' if len(sys.argv) > 1 else trescopeExe
+defaultArgs = ';'.join([f'{key}={value}' for key, value in {
+    'contextPath': os.path.dirname(trescope.__file__),
+}.items()])
+allArgs = [*sys.argv[1:], defaultArgs]
+silly_quote = [f'"{arg}"' for arg in allArgs]
+
+trescopeExe = f'{trescopeExe} {" ".join(silly_quote)}'
 subprocess.call([trescopeExe], shell=True)

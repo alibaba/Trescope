@@ -2,17 +2,27 @@ from trescope.controller import ControllerNode
 
 
 class Input(object):
+    """
+    Input for adding control , only works for display output . By adding control , you can input user information to control program
+    execution to complete some jobs , such as labelling . Input data will return by :py:meth:`Trescope.breakPoint`
+    """
     def __init__(self, host):
         from trescope.core import Output
         self.__host: Output = host
 
     def addControl(self, controlNode: ControllerNode):
-        self.__host.getHost().internalCommit(function='addControl', **self.__host.toDict(), **controlNode.toDict())
+        """
+        Add control .
+
+        :param controlNode: control
+        :return: self , for chain call
+        """
+        self.__host.getHost()._internalCommit(function='addControl', **self.__host.toDict(), **controlNode.toDict())
         return self
 
     def waitForControllerWithId(self, controlId, identifier: str = ''):
-        rawResult = self.__host.internalCommit(function='waitForControllerWithId',
-                                               controlId=controlId, identifier=identifier)
+        rawResult = self.__host._internalCommit(function='waitForControllerWithId',
+                                                controlId=controlId, identifier=identifier)
 
         controlResult = rawResult['result']
         if 'TriggerControl' == controlResult['type']: return controlId

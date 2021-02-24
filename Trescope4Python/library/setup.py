@@ -100,10 +100,11 @@ setup(
     zip_safe=False,
     install_requires=['numpy'],
 
-    packages=['trescope', 'trescope.core', 'trescope.controller', 'trescope.config'],
+    packages=['trescope', 'trescope.core', 'trescope.blender', 'trescope.controller', 'trescope.config'],
     package_dir={
         'trescope': 'src/trescope',
         'trescope.core': 'src/trescope/core',
+        'trescope.blender': 'src/trescope/blender',
         'trescope.controller': 'src/trescope/controller',
         'trescope.config': 'src/trescope/config'
     },

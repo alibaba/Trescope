@@ -1,2 +1,0 @@
-- name: Undo rollout
-  local_action: command kubectl rollout undo deployments/imageserver

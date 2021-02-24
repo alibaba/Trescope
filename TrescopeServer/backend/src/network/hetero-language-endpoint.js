@@ -2,11 +2,18 @@ const net = require('net');
 const event = require('./event-define');
 const Session = require('./session');
 
-function tryParse(data) {
+function tryParse(type, data) {
     try {
-        if ('True' === data) return true;
-        if ('False' === data) return false;
-        if ('None' === data) return null;
+        if ('boolean' === type) {
+            if ('True' === data) return true;
+            if ('False' === data) return false;
+        }
+        if ('null' === type && 'None' === data) return null;
+
+        if ('string' === type) return data;
+        if ('number' === type) return Number(data);
+        if ('array' === type) return eval(data);
+        console.warn(`Trescope eval data: ${data} for type: ${type}`);
         return eval(data);
     } catch (e) {
         return data;
@@ -23,10 +30,11 @@ function parseHeteroData(hetero) {
 
         const keyValue = line.split('¥爨¥');
         const key = keyValue[0];
-        const value = keyValue[1];
+        const type = keyValue[1];
+        const value = keyValue[2];
         if ('function' === key) remoteFuncName = value;
         else if ('token' === key) token = Number(value);
-        else remoteFuncParams[key] = tryParse(value);
+        else remoteFuncParams[key] = tryParse(type, value);
         return false;
     });
     return {remoteFuncName, remoteFuncParams, token};
@@ -38,6 +46,7 @@ class HeteroLanguageEndpoint {
         this._heterSocketServer = this._create();
         this._listeners = new Map();
         this._heteroLangSession = null;
+        this.pid = -1;
     }
 
     on(eventName, callback) {
@@ -56,7 +65,7 @@ class HeteroLanguageEndpoint {
         }];
     }
 
-    _initializeSession(socket, ip) {
+    _initializeSession(socket, ip, pid) {
         const session = new Session(socket);
         this._heteroLangSession = session;
 
@@ -64,16 +73,16 @@ class HeteroLanguageEndpoint {
             if (errorMaybe && 'ECONNRESET' !== errorMaybe.code) console.error('Trescope.server.HeteroLangEndpoint.error', errorMaybe);
 
             this._heteroLangSession = null;
-            this._safeGetListeners(event.DISCONNECT).forEach(callback => callback({session, ip}));
+            this._safeGetListeners(event.DISCONNECT).forEach(callback => callback({session, ip, pid}));
         };
 
-        this._safeGetListeners(event.CONNECT).forEach(callback => callback({session, ip}));
+        this._safeGetListeners(event.CONNECT).forEach(callback => callback({session, ip, pid}));
         let dataBuffer = '';
         socket.on('data', data => {
             dataBuffer += data.toString();
             if (!dataBuffer.includes("EOF")) return;
             this._safeGetListeners(event.MESSAGE).forEach(callback => callback({
-                ...parseHeteroData(dataBuffer), session, ip
+                ...parseHeteroData(dataBuffer), session, ip, pid
             }));
             dataBuffer = '';
         });
@@ -83,30 +92,37 @@ class HeteroLanguageEndpoint {
 
     _handshake(socket, data) {
         try {
-            const {remoteFuncName, remoteFuncParams: {identifier}, token} = parseHeteroData(data.toString());
-            if ('heteroHandshake' !== remoteFuncName) return false;
+            const {remoteFuncName, remoteFuncParams: {identifier, pid}, token} = parseHeteroData(data.toString());
+            if ('heteroHandshake' !== remoteFuncName) return {success: false, pid};
 
             const success = this._identifier === identifier;
             socket.write(JSON.stringify({success, token}));
-            return success;
+            return {success, pid};
         } catch (e) {
             return false;
         }
     }
 
     _create() {
+        let _pid;
         return net.createServer(socket => {
             const ip = socket.remoteAddress;
             if (null !== this._heteroLangSession) {//Only unique connection can be accepted here
-                console.error(`Trescope.client.MultiHeteroLanguageEndpoint.ip{${ip}}`);
+                console.error(`Trescope.client.MultiHeteroLanguageEndpoint.ip{${ip}}, pid ${_pid} has connected already`);
+                new Session(socket).send({
+                    success: false,
+                    info: `Backend ${this._identifier} has been occupied by process ${_pid}`
+                });
                 return;
             }
 
             socket.on('data', data => {
-                if (!this._handshake(socket, data)) return;
+                const {success, pid} = this._handshake(socket, data);
+                if (!success) return;
 
                 socket.removeAllListeners();
-                this._initializeSession(socket, ip);
+                _pid = pid;
+                this._initializeSession(socket, ip, pid);
             });
         });
     }

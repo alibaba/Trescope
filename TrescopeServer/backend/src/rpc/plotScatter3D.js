@@ -1,7 +1,7 @@
 const utils = require("../utils");
 
 function plotScatter3D({
-                           params: {outputId, x, y, z, name, mode, size, color, symbol},
+                           params: {outputId, x, y, z, name, mode, size, width, color, symbol},
                            context: {bundle},
                            sendToOutputAndWaitForResult,
                        }) {
@@ -13,9 +13,8 @@ function plotScatter3D({
             symbol,
             color: utils.intToRGBA(color),
         },
-        x,
-        y,
-        z,
+        line: {width},
+        x, y, z,
         name,
     };
 

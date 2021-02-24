@@ -1,8 +1,5 @@
 function plotImage({
-                       params: {
-                           filePath, outputId,
-                           enumeration
-                       },
+                       params: {filePath, outputId,},
                        context: {bundle},
                        sendToOutputAndWaitForResult,
                    }) {

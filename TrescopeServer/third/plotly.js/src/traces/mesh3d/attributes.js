@@ -1,5 +1,5 @@
 /**
-* Copyright 2012-2020, Plotly, Inc.
+* Copyright 2012-2021, Plotly, Inc.
 * All rights reserved.
 *
 * This source code is licensed under the MIT license found in the
@@ -40,7 +40,48 @@ module.exports = extendFlat({
             'jointly represent the X, Y and Z coordinates of the nth vertex.'
         ].join(' ')
     },
-
+        u: {
+            valType: 'data_array',
+            role: 'style',
+            editType: 'calc',
+            description: [
+                'Sets the texture coordinates U of the vertices. The nth element of vectors `u` and `v`',
+                'jointly represent the U and V coordinates of the nth vertex.'
+            ].join(' ')
+        },
+        v: {
+            valType: 'data_array',
+            role: 'style',
+            editType: 'calc',
+            description: [
+                'Sets the texture coordinates V of the vertices. The nth element of vectors `u` and `v`',
+                'jointly represent the U and V coordinates of the nth vertex.'
+            ].join(' ')
+        },
+        texture: {
+            valType: 'string',
+            role: 'style',
+            editType: 'calc',
+            description: [
+                'Sets texture url.'
+            ].join(' ')
+        },
+        textureFlip: {
+            valType: 'boolean',
+            role: 'style',
+            dflt: false,
+            editType: 'calc',
+            description: [
+                'Flip bitmap as texture or not automatically.'
+            ].join(' ')
+        },
+        textureWrap: {
+            valType: 'enumerated',
+            values: Object.keys({CLAMP_TO_EDGE: 'CLAMP_TO_EDGE', MIRRORED_REPEAT: 'MIRRORED_REPEAT', REPEAT: 'REPEAT'}),
+            role: 'style',
+            arrayOk: true,
+            description: 'Sets texture wrap.'
+        },
     i: {
         valType: 'data_array',
         editType: 'calc',
@@ -250,5 +291,5 @@ colorScaleAttrs('', {
     }, surfaceAttrs.lighting),
 
     hoverinfo: extendFlat({}, baseAttrs.hoverinfo, {editType: 'calc'}),
-    showlegend: extendFlat({}, baseAttrs.showlegend, {dflt: false})
+    // showlegend: extendFlat({}, baseAttrs.showlegend, {dflt: false}) YunzhongTianjing: forbid default plotly legend behavior of mesh3d
 });

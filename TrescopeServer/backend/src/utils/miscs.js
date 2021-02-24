@@ -16,7 +16,6 @@ const TemplateSceneXYZAxis = {
     }
 };
 
-const noop = () => {
-};
+const noop = () => undefined;
 
 module.exports = {TemplateSceneXYZAxis, noop};

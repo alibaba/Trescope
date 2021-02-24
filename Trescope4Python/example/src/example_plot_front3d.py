@@ -2,9 +2,13 @@ import json
 import os
 
 import numpy as np
+
 from trescope import Trescope, Layout
 from trescope.config import (Mesh3DConfig, PerspectiveCamera, FRONT3DConfig)
 from trescope.toolbox import simpleDisplayOutputs, color_from_label, simpleFileOutputs
+
+front3d_base = os.path.abspath(os.path.join(
+    os.path.dirname(__file__), '../data/res/3D-FRONT-samples'))
 
 
 def visualize_front3d_mesh_type(output_id, front3d_scene_file):
@@ -22,11 +26,12 @@ def visualize_front3d_mesh_type(output_id, front3d_scene_file):
             type_cluster[mesh_type]['faces'] = np.vstack((type_cluster[mesh_type]['faces'], faces))
 
     for index, (mesh_type, mesh) in enumerate(type_cluster.items()):
-        Trescope().selectOutput(output_id).updateLayout(Layout().camera(PerspectiveCamera().up(0, 1, 0).eye(0, 2.3, 0)))
+        Trescope().selectOutput(output_id).updateLayout(Layout().showLegend(False).camera(PerspectiveCamera().up(0, 1, 0).eye(0, 2.3, 0)))
         (Trescope()
          .selectOutput(output_id)
          .plotMesh3D(*mesh['xyz'].T)
          .withConfig(Mesh3DConfig().indices(*mesh['faces'].T).color(color_from_label(index)).name(mesh_type)))
+    Trescope().selectOutput(output_id).flush()
 
 
 def visualize_front3d_color(output_id, front3d_scene_file):
@@ -34,9 +39,10 @@ def visualize_front3d_color(output_id, front3d_scene_file):
      .plotFRONT3D(front3d_scene_file)
      .withConfig(FRONT3DConfig()
                  .view('top')
-                 .shapeLocalSource('../data/res/3D-FRONT-samples/3D-FUTURE-model/')
-                 .hiddenMeshes(['Ceiling', 'CustomizedCeiling'])
+                 .shapeLocalSource(os.path.join(front3d_base, '3D-FUTURE-model'))
+                 .hiddenMeshes(['Ceiling', 'CustomizedCeiling', 'WallInner', 'WallOuter'])
                  .renderType('color')))
+    Trescope().selectOutput(output_id).flush()
 
 
 def visualize_front3d_depth(output_id, front3d_scene_file):
@@ -44,9 +50,10 @@ def visualize_front3d_depth(output_id, front3d_scene_file):
      .plotFRONT3D(front3d_scene_file)
      .withConfig(FRONT3DConfig()
                  .view('top')
-                 .shapeLocalSource('../data/res/3D-FRONT-samples/3D-FUTURE-model/')
+                 .shapeLocalSource(os.path.join(front3d_base, '3D-FUTURE-model'))
                  .hiddenMeshes(['Ceiling', 'CustomizedCeiling'])
                  .renderType('depth')))
+    Trescope().selectOutput(output_id).flush()
 
 
 def visualize_front3d_normal(output_id, front3d_scene_file):
@@ -54,13 +61,15 @@ def visualize_front3d_normal(output_id, front3d_scene_file):
      .plotFRONT3D(front3d_scene_file)
      .withConfig(FRONT3DConfig()
                  .view('top')
-                 .shapeLocalSource('../data/res/3D-FRONT-samples/3D-FUTURE-model/')
+                 .shapeLocalSource(os.path.join(front3d_base, '3D-FUTURE-model'))
                  .hiddenMeshes(['Ceiling', 'CustomizedCeiling'])
                  .renderType('normal')))
+    Trescope().selectOutput(output_id).flush()
 
 
 def main(output_type):
-    front3d_scene = '../data/res/3D-FRONT-samples/scenes/'
+    front3d_scene = os.path.join(front3d_base, 'scenes')
+
 
     output_ids = [f'{file[:-5]}.{render_type}' for file in os.listdir(front3d_scene) for render_type in ['color', 'depth', 'normal', 'mesh_semantic']]
 

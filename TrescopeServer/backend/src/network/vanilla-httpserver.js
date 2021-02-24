@@ -46,7 +46,7 @@ customPathFuncMap.put(/\/fetch\?/, (url, response) => {
     }
 
     const ext = remoteOrLocalFile.split('.').pop();
-    const md5sum = crypto.createHash('sh256');
+    const md5sum = crypto.createHash('sha256');
     const fileName = `${md5sum.update(remoteOrLocalFile).digest('hex')}.${ext}`;
     const fileTempPath = path.join(_center.taskTemporaryDirectory(), fileName);
 

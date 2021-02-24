@@ -10,8 +10,9 @@
 **/__pycache__
 **/.DS_Store
 **/.idea
+**/node_modules
 
 Trescope4Python/library/doc/
 TrescopeServer/universal/scene-json-renderer/lib/
-TrescopeServer/third/orca/bin/
+TrescopeDoc/_build/
 TrescopeServer/third/plotly.js/test/image/export_test.js
