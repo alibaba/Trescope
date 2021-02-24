@@ -1,6 +1,6 @@
 # Trescope
 ## Introduction
-Trescope is a comprehensive 3D machine learning development tool devoted to improve developing experience and speed in 3D field, which helps researchers and developers to label, debug, visualize various 3D data . see the [documentation](https://alibaba.github.io/Trescope) for details .
+Trescope is a comprehensive 3D machine learning development tool devoted to improve developing experience and speed in 3D field, which helps researchers and developers to label, debug, visualize various 3D data . see the [documentation](https://alibaba.github.io/Trescope/index.html) for details .
 
 ## Key features
 
