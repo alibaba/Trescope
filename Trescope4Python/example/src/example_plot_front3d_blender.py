@@ -12,10 +12,11 @@ def visualize_front3d_color(output_id, front3d_scene_file, camera):
     Trescope().selectOutput(output_id).updateLayout(
         Layout().camera(PerspectiveCamera().up(*camera['up']).center(*camera['target']).eye(*camera['pos']).fovy(camera['fov']).near(camera['near']).far(
             camera['far'])))
+
     (Trescope().selectOutput(output_id)
      .plotFRONT3D(front3d_scene_file)
      .withConfig(FRONT3DConfig()
-                 .shapeLocalSource('../data/res/3D-FRONT-samples/3D-FUTURE-model/')
+                 .shapeLocalSource(os.path.abspath(os.path.join(os.path.dirname(__file__), '../data/res/3D-FRONT-samples/3D-FUTURE-model/')))
                  .renderer('blender')
                  .baseLightStrength(8)
                  .renderType('color')))
@@ -30,7 +31,7 @@ def main():
         cameras = cameras[:10]
 
     output_ids = [f'{name[:-4]}.color' for name, _ in cameras]
-    Trescope().initialize(True, simpleFileOutputs(directory='../data/gen/plot_front3d_blender',
+    Trescope().initialize(True, simpleFileOutputs(directory=os.path.abspath(os.path.join(os.path.dirname(__file__), '../data/gen/plot_front3d_blender')),
                                                   fileNames=output_ids, widthPixel=256, heightPixel=256))
 
     for name, camera_info in cameras:
